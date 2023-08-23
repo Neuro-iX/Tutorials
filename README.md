@@ -21,7 +21,7 @@ rm -rf ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
 
 ~/miniconda3/bin/conda init bash
 
-source ./bashrc
+source ~/.bashrc
 
 ## Install Jupyterlab for Linux
 
