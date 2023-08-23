@@ -3,6 +3,11 @@
 All the tutorials are in jupyter notebook format.
 You are welcomed to update/improve previous tutorials or add your own (Cf. Tutorial on how to use github, git and datalad).
 
+## New member
+
+You can add your professionnal information for the website Neuro-iX.github.io using this Google Form:
+https://forms.gle/ED53rp24KYCZtMYu7
+
 ## Install Miniconda for Linux
 https://docs.conda.io/en/latest/miniconda.html#linux-installers
 
