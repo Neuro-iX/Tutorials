@@ -5,6 +5,8 @@ You are welcome to update/improve previous tutorials or add your own (Cf. Tutori
 
 ## New member
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Neuro-iX/Tutorials/main?labpath=utorial_NewMember.ipynb)
+
 You can add your professionnal information for the website Neuro-iX.github.io using this Google Form:
 https://forms.gle/ED53rp24KYCZtMYu7
 
