@@ -1,10 +1,10 @@
 # Tutorials
 
 All the tutorials are in jupyter notebook format. \
-You are welcome to update/improve previous tutorials or add your own (Cf. Tutorial on how to use github, git and datalad).
+You are welcome to update/improve previous tutorials or add your own.
 
-- [Launching using Google Colab](#Launching)
-- [Tutorial 1 - New member](#Tutorial-1)
+- [Launching notebooks using Google Colab](#Launching)
+- [Tutorial-1 - New member's guidebook](#Tutorial-1)
   
 ## Launching
 
@@ -18,8 +18,9 @@ https://github.com/Neuro-iX/Tutorials
 
 New member's guidebook: 
 
-1. Help updating our website Neuro-iX.github.io
-2. Setup a new account to access Narval's compute nodes \
+0. MonETS account: Multifactor authentication and VPN setup
+1. Help updating Neuro-iX.github.io with your information
+2. New account to access Narval's compute nodes \
     a) Create an account on Digital Research Aliance of Canada \
     b) Install and configure Putty/MobalXterm for connexion to Narval \
     c) Basic commands example
