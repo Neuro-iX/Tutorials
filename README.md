@@ -1,33 +1,24 @@
 # Tutorials
 
-All the tutorials are in jupyter notebook format.
+All the tutorials are in jupyter notebook format. \
 You are welcome to update/improve previous tutorials or add your own (Cf. Tutorial on how to use github, git and datalad).
 
-## New member
+## How to use jupyter notebooks without any installation ?
 
-You can add your professionnal information for the website Neuro-iX.github.io using this Google Form:
-https://forms.gle/ED53rp24KYCZtMYu7
+Go to Google colab: \
+https://colab.research.google.com
 
-## Install Miniconda for Linux
-https://docs.conda.io/en/latest/miniconda.html#linux-installers
+In Github section, print the repository's url: \
+https://github.com/Neuro-iX/Tutorials
 
-mkdir -p ~/miniconda3
+## Tutorial 1: New member
 
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-
-bash ~/Downloads/Miniconda3-latest-Linux-x86_64.sh -b -u -p ~/miniconda3
-
-rm -rf ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
-
-~/miniconda3/bin/conda init bash
-
-source ~/.bashrc
-
-## Install Jupyterlab for Linux
-
-conda install -c conda-forge jupyterlab
-
-jupyter lab
-
-## Binder links
+1. Help updating our website Neuro-iX.github.io
+2. Setup a new account to access Narval's compute nodes \
+    a) Create an account on Digital Research Aliance of Canada \
+    b) Install and configure Putty/MobalXterm for connexion to Narval \
+    c) Basic commands example
+3. Setup Git and Jupyterlab on your laptop \
+    a) Installation and configuration of git
+4. Setup a virtual machine on your laptop
 
