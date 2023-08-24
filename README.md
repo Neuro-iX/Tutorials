@@ -3,10 +3,10 @@
 All the tutorials are in jupyter notebook format. \
 You are welcome to update/improve previous tutorials or add your own (Cf. Tutorial on how to use github, git and datalad).
 
-- [Launching using Google Colab](#How)
+- [Launching using Google Colab](#Launching)
 - [Tutorial 1 - New member](#tuto1)
   
-## Launching using Google Colab
+## Launching
 
 Go to Google Colab: \
 https://colab.research.google.com
