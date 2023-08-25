@@ -13,6 +13,8 @@ Go to <a href="https://colab.research.google.com" target="_blank">Google Colab</
 
 [Google Colab](https://colab.research.google.com){:target=”_blank” rel="noopener"} 
 
+[Stackoverflow The Key](https://stackoverflow.blog/2021/03/31/the-key-copy-paste/){:target="_blank" rel="noopener"}
+
 In Github section, print the repository's url: \
 https://github.com/Neuro-iX/Tutorials
 
