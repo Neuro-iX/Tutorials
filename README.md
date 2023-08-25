@@ -11,7 +11,7 @@ You are welcome to update/improve previous tutorials or add your own.
 
 Go to [Google Colab](https://colab.research.google.com)
 
-In Github section, print the repository's url: \
+In Github section, print the repository's url:
 ```javascript
 https://github.com/Neuro-iX/Tutorials
 ```
