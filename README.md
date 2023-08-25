@@ -11,7 +11,7 @@ You are welcome to update/improve previous tutorials or add your own.
 
 Go to <a href="https://colab.research.google.com" target="_blank">Google Colab</a>
 
-[Google Colab](https://colab.research.google.com){:target=”_blank”} 
+[Google Colab](https://colab.research.google.com){:target=”_blank” rel="noopener"} 
 
 In Github section, print the repository's url: \
 https://github.com/Neuro-iX/Tutorials
