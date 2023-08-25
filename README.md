@@ -16,10 +16,10 @@ https://github.com/Neuro-iX/Tutorials
 
 ## Tutorial-1
 
-**New member's guidebook**: 
+**New member's guidebook**: \ 
 https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_NewMember.ipynb
 
-Learning outcomes:
+Learning outcomes: \
 0. MonETS account: Multifactor authentication and VPN setup
 1. Help updating Neuro-iX.github.io with your information
 2. New account to access Narval's compute nodes \
