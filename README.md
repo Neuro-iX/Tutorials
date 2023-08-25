@@ -9,11 +9,7 @@ You are welcome to update/improve previous tutorials or add your own.
 ## Launching
 
 
-Go to <a href="https://colab.research.google.com" target="_blank">Google Colab</a>
-
-[Google Colab](https://colab.research.google.com){:target=”_blank” rel="noopener"} 
-
-[Stackoverflow The Key](https://stackoverflow.blog/2021/03/31/the-key-copy-paste/){:target="_blank" rel="noopener"}
+Go to [Google Colab](https://colab.research.google.com)
 
 In Github section, print the repository's url: \
 https://github.com/Neuro-iX/Tutorials
