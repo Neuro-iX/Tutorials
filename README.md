@@ -19,7 +19,7 @@ https://github.com/Neuro-iX/Tutorials
 
 ## Tutorial-1
 
-[**New member's guidebook**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_NewMember.ipynb)
+[**New member's guidebook**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_1_NewMember.ipynb)
 
 Learning outcomes:
 
