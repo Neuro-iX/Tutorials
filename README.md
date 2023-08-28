@@ -21,15 +21,18 @@ https://github.com/Neuro-iX/Tutorials
 
 [**New member's guidebook**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_1_NewMember.ipynb)
 
-Learning outcomes:
+Learning outcomes
 
 0. MonETS account: Multifactor authentication and VPN setup
 1. Help updating Neuro-iX.github.io with your information
-2. New account to access Narval's compute nodes \
-    a) Create an account on Digital Research Aliance of Canada \
-    b) Install and configure Putty/MobalXterm for connexion to Narval \
-    c) Basic commands example
-3. Setup Git and Jupyterlab on your laptop \
-    a) Installation and configuration of git
+2. New account to access Narval's compute nodes
+  a) Create an account on GitHub and Compute Canada Database (CCDB)
+  b) Configure your ssh connexion to Narval cluster and GitHub repository
+  c) Basic commands example on a Narval node
+3. Setup Miniconda, Git, Datalad and Jupyterlab on your laptop
+  a) Install Miniconda, Git, Datalad and Jupyterlab
+  b) Basics for Git/Datalad/GitHub in bash
 4. Setup a virtual machine on your laptop
+
+
 
