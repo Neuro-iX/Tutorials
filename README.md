@@ -3,7 +3,7 @@
 All the tutorials are in jupyter notebook format. \
 You are welcome to update/improve previous tutorials or add your own.
 
-- [Launching notebooks using Google Colab](#Launching)
+- [Launching notebooks](#Launching)
 - [Tutorial-1 - New member's guidebook](#Tutorial-1)
   
 ## Launching
