@@ -5,6 +5,7 @@ You are welcome to update/improve previous tutorials or add your own.
 
 - [Launching notebooks](#Launching)
 - [Tutorial-1 - New member's guidebook](#Tutorial-1)
+- [Tutorial-2 - Freesurfer](#Tutorial-2)
   
 ## Launching
 
@@ -36,5 +37,13 @@ Learning outcomes
   b) Basics for Git/Datalad/GitHub in bash
 4. Setup a virtual machine on your laptop
 
+## Tutorial-2
 
+[**Freesurfer**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/.ipynb_checkpoints/Tutorial_2_Freesurfer-checkpoint.ipynb)
+
+Learning outcomes
+
+0. Freesurfer overview
+1. Freesurfer installation/build
+2. Freesurfer tutorials
 
