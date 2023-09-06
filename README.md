@@ -28,7 +28,7 @@ Learning outcomes
 
 0. MonETS account setup
 1. Help updating Neuro-iX.github.io with your information
-2. New account to access Narval's compute nodes \
+2. New account to access Narval's compute nodes and Neuro-iX's Github \
   a) Create an account on GitHub and Compute Canada Database (CCDB) \
   b) Configure your ssh connexion to Narval cluster and GitHub repository \
   c) Basic commands example on a Narval node
