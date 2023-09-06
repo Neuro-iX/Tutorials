@@ -26,7 +26,7 @@ Alternatively, you can launch tutorials using Jupyterlab. See [Tutorial-1 - New 
 
 Learning outcomes
 
-0. MonETS account: Multifactor authentication and VPN setup
+0. MonETS account setup
 1. Help updating Neuro-iX.github.io with your information
 2. New account to access Narval's compute nodes \
   a) Create an account on GitHub and Compute Canada Database (CCDB) \
