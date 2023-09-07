@@ -33,9 +33,10 @@ Learning outcomes
   b) Configure your ssh connexion to Narval cluster and GitHub repository \
   c) Basic commands example on a Narval node
 3. Setup Miniconda, Git, Datalad and Jupyterlab on your laptop \
-  a) Install Miniconda, Git, Datalad and Jupyterlab \
-  b) Basics for Git/Datalad/GitHub in bash
-4. Setup a virtual machine on your laptop
+  a) Understand Miniconda, Git, DataLad and JupyterLab \
+  b) Install Miniconda, Git, DataLad and JupyterLab \
+  c) Basics for Git, DataLad, JupyterLab and GitHub in bash
+5. Setup a virtual machine on your laptop
 
 ## Tutorial-2
 
