@@ -22,7 +22,7 @@ Alternatively, you can launch tutorials using Jupyterlab. See [Tutorial-1 - New 
 
 ## Tutorial-1
 
-[**New member's guidebook**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_1_NewMember/Tutorial_1_NewMember.ipynb)
+:rocket: [**New member's guidebook**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_1_NewMember/Tutorial_1_NewMember.ipynb)
 
 Learning outcomes
 
@@ -40,7 +40,7 @@ Learning outcomes
 
 ## Tutorial-2
 
-[**Freesurfer**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_2_Freesurfer/Tutorial_2_Freesurfer.ipynb)
+:rocket: [**Freesurfer**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_2_Freesurfer/Tutorial_2_Freesurfer.ipynb)
 
 Learning outcomes
 
