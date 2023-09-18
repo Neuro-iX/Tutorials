@@ -36,7 +36,8 @@ Learning outcomes
   a) Understand Miniconda, Git, DataLad and JupyterLab \
   b) Install Miniconda, Git, DataLad and JupyterLab \
   c) Basics for Git, DataLad, JupyterLab and GitHub in bash
-5. Setup a virtual machine on your laptop
+4. Setup a virtual machine on your laptop
+5. Bonus: Some interesting applications and websites
 
 ## Tutorial-2
 
