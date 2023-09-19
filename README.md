@@ -31,13 +31,14 @@ Learning outcomes
 2. New account to access Narval's compute nodes and Neuro-iX's Github \
   a) Create an account on GitHub and Compute Canada Database (CCDB) \
   b) Configure your ssh connexion to Narval cluster and GitHub repository \
-  c) Basic commands example on a Narval node
-3. Setup Miniconda, Git, Datalad and Jupyterlab on your laptop \
+  c) Storage and file management on Narval \
+  d) Basic commands example on a Narval node
+4. Setup Miniconda, Git, Datalad and Jupyterlab on your laptop \
   a) Understand Miniconda, Git, DataLad and JupyterLab \
   b) Install Miniconda, Git, DataLad and JupyterLab \
   c) Basics for Git, DataLad, JupyterLab and GitHub in bash
-4. Setup a virtual machine on your laptop
-5. Bonus: Some interesting applications and websites
+5. Setup a virtual machine on your laptop
+6. Bonus: Some interesting applications and websites
 
 ## Tutorial-2
 
