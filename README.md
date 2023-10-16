@@ -45,14 +45,19 @@ Learning outcomes
 
 :rocket: [**Freesurfer**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_2_Freesurfer/Tutorial_2_Freesurfer.ipynb)
 
-## Tutorial-3
-
-:rocket: [**Narval**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_3_Narval_CCDB/Tutorial_3_Narval.ipynb)
-
-
 Learning outcomes
 
 0. Freesurfer overview
 1. Freesurfer installation/build
 2. Freesurfer tutorials
+   
+## Tutorial-3
+
+:rocket: [**Narval**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_3_Narval_CCDB/Tutorial_3_Narval.ipynb)
+
+Learning outcomes
+
+0. Install GLobus for Data transfert
+1. Datasets available
+2. SLURM job template
 
