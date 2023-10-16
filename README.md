@@ -6,6 +6,7 @@ You are welcome to update/improve previous tutorials or add your own.
 - [Launching notebooks](#Launching)
 - [Tutorial-1 - New member's guidebook](#Tutorial-1)
 - [Tutorial-2 - Freesurfer](#Tutorial-2)
+- [Tutorial-3 - Narval](#Tutorial-3)
   
 ## Launching
 
@@ -43,6 +44,11 @@ Learning outcomes
 ## Tutorial-2
 
 :rocket: [**Freesurfer**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_2_Freesurfer/Tutorial_2_Freesurfer.ipynb)
+
+## Tutorial-3
+
+:rocket: [**Narval**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_3_Narval_CCDB/Tutorial_3_Narval.ipynb)
+
 
 Learning outcomes
 
