@@ -61,3 +61,12 @@ Learning outcomes
 1. Datasets available
 2. SLURM job template
 
+## Tutorial-4
+
+:rocket: [**Narval**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_4_Lab_computers/Tutorial_4_Lab_computers.ipynb)
+
+**Learning outcomes**
+
+0. [List of softwares installed](#scrollTo=be524736-3944-4376-b03c-6b85ffb0eb3e)
+1. [Shared folders](#scrollTo=9f94af8c-5dce-4327-9580-793e7aaecc22)
+2. [Rules](#scrollTo=3877d880-4c49-4093-9b69-3cdfe6462132)
