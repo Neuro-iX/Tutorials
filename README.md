@@ -8,7 +8,7 @@ You are welcome to update/improve previous tutorials or add your own.
 - [Tutorial-2 - Freesurfer](#Tutorial-2)
 - [Tutorial-3 - Narval](#Tutorial-3)
 - [Tutorial-4 - Lab computers](#Tutorial-4)
-- 
+
 ## Launching
 
 
