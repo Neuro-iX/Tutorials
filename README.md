@@ -63,7 +63,7 @@ Learning outcomes
 
 ## Tutorial-4
 
-:rocket: [**Narval**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_4_Lab_computers/Tutorial_4_Lab_computers.ipynb)
+:rocket: [**Lab computers**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_4_Lab_computers/Tutorial_4_Lab_computers.ipynb)
 
 **Learning outcomes**
 
