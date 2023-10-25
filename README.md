@@ -32,9 +32,7 @@ Learning outcomes
 1. Help updating Neuro-iX.github.io with your information
 2. New account to access Narval's compute nodes and Neuro-iX's Github \
   a) Create an account on GitHub and Compute Canada Database (CCDB) \
-  b) Configure your ssh connexion to Narval cluster and GitHub repository \
-  c) Storage and file management on Narval \
-  d) Basic commands example on a Narval node
+  b) Configure your ssh connexion to Narval cluster and GitHub repository 
 4. Setup Miniconda, Git, Datalad and Jupyterlab on your laptop \
   a) Understand Miniconda, Git, DataLad and JupyterLab \
   b) Install Miniconda, Git, DataLad and JupyterLab \
@@ -58,9 +56,14 @@ Learning outcomes
 
 Learning outcomes
 
-0. Install GLobus for Data transfert
-1. Datasets available
-2. SLURM job template
+0. CCDB account setup and ssh connection to Narval
+1. Create a GLobus account for Data transfert (optional)
+2. Structure and Datasets in Narval \
+    a) Storage and file management on Narval \
+    b) Datasets in data
+3. Basic commands on a Narval node
+4. SLURM job templates
+
 
 ## Tutorial-4
 
