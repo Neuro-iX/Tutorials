@@ -11,8 +11,9 @@ You are welcome to update/improve previous tutorials or add your own.
 
 ## Launching
 
+Clic on the links with :rocket:
 
-Go to [Google Colab](https://colab.research.google.com)
+Alternatively, go to [Google Colab](https://colab.research.google.com)
 
 In Github section, print the repository's url:
 ```javascript
