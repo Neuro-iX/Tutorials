@@ -11,7 +11,7 @@ You are welcome to update/improve previous tutorials or add your own.
 
 ## Launching
 
-Clic on the links with :rocket:
+Click on the links with :rocket:
 
 Alternatively, go to [Google Colab](https://colab.research.google.com)
 
