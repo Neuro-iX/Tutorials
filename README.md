@@ -73,6 +73,6 @@ Learning outcomes
 
 Learning outcomes
 
-0. List of softwares installed
-1. Shared folders
-2. Rules
+0. Structure of office computers
+1. List of softwares installed
+
