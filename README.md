@@ -20,7 +20,8 @@ In Github section, print the repository's url:
 https://github.com/Neuro-iX/Tutorials
 ```
 
-Alternatively, you can launch tutorials using Jupyterlab. See [Tutorial-1 - New member's guidebook](#Tutorial-1).
+Alternatively, you can launch tutorials using Jupyterlab. \
+See [Tutorial-1 - New member's guidebook](#Tutorial-1).
 
 
 ## Tutorial-1
