@@ -71,7 +71,7 @@ Learning outcomes
 
 :rocket: [**Lab computers**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_4_Lab_computers/Tutorial_4_Lab_computers.ipynb)
 
-**Learning outcomes**
+Learning outcomes
 
 0. List of softwares installed
 1. Shared folders
