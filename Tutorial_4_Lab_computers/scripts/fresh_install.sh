@@ -24,3 +24,18 @@ mv Zotero_linux-x86_64 Zotero
 chmod +x $HOME/Zotero/set_launcher_icon
 $HOME/Zotero/set_launcher_icon
 ln -s $HOME/Zotero/zotero.desktop ~/.local/share/applications/zotero.desktop
+
+# Miniconda3
+
+
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+
+~/miniconda3/bin/conda init bash
+
+source "$HOME/.profile"
+
+export PATH="$HOME/miniconda3/bin:$PATH"
+source "$HOME/miniconda3/bin/activate"
