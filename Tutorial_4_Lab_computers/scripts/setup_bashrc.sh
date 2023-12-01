@@ -26,6 +26,7 @@ Echo "
 #########
 FSLDIR=/project/Neuro-IX/software/fsl
 . ${FSLDIR}/etc/fslconf/fsl.sh
+source /env/environment #reset PATH
 PATH=${FSLDIR}/share/fsl/bin:${PATH}
 export FSLDIR PATH
 "
