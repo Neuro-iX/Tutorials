@@ -58,4 +58,4 @@ source "/project/Neuro-IX/software/miniconda3/bin/activate"
 #########
 ## Source $HOME/.bashrc script
 #########
-source \$HOME/.bashrc
+source $HOME/.bashrc
