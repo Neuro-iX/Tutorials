@@ -24,7 +24,7 @@ Echo "
 #########
 ## FSL Setup
 #########
-FSLDIR=/project/Neuro-IX/software/fsl
+FSLDIR=/project/Neuro-IX/software/fsl6
 . ${FSLDIR}/etc/fslconf/fsl.sh
 #source /env/environment #reset PATH
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:/sbin:/snap/bin
