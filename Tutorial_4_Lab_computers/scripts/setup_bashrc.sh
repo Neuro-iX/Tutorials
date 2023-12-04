@@ -10,6 +10,12 @@ Last update: 09/11/2023
 "
 
 #########
+## Reset $HOME/.bashrc by removing everything after "#########"
+#########
+sed -i '0,/#########/!d' $HOME/.bashrc
+
+
+#########
 ## Function to both print on terminal and $HOME/.bashrc script
 #########
 Echo()
@@ -25,39 +31,31 @@ Echo "
 ## FSL Setup
 #########
 FSLDIR=/project/Neuro-IX/software/fsl6
-. ${FSLDIR}/etc/fslconf/fsl.sh
-#source /env/environment #reset PATH
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:/sbin:/snap/bin
-PATH=${FSLDIR}/share/fsl/bin:${PATH}
+. \$FSLDIR/etc/fslconf/fsl.sh
+source /etc/environment #reset PATH
+PATH=\$FSLDIR/share/fsl/bin:\$PATH
 export FSLDIR PATH
-"
 
-Echo "
 #########
 ## Freesurfer Setup
 #########
 export FREESURFER_HOME=/project/Neuro-IX/software/freesurfer
-source $FREESURFER_HOME/SetUpFreeSurfer.sh
-"
+source \$FREESURFER_HOME/SetUpFreeSurfer.sh
 
-Echo "
 #########
 ## Slicer Setup
 #########
 export SITK_SHOW_COMMAND=/project/Neuro-IX/software/Slicer-5.6.0-linux-amd64
 alias slicer='/project/Neuro-IX/software/Slicer-5.6.0-linux-amd64/Slicer'
-"
 
-Echo "
 #########
 ## Miniconda3 Setup
 #########
-export PATH="/project/Neuro-IX/software/miniconda3/bin:$PATH"
-export PATH="/home/user/miniconda3/condabin:$PATH"
+export PATH="/project/Neuro-IX/software/miniconda3/bin:/home/user/miniconda3/condabin:\$PATH"
 source "/project/Neuro-IX/software/miniconda3/bin/activate"
 "
 
 #########
 ## Source $HOME/.bashrc script
 #########
-source $HOME/.bashrc
+source \$HOME/.bashrc
