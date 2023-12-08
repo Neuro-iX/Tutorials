@@ -30,4 +30,6 @@ source "/project/Neuro-IX/software/miniconda3/bin/activate"
 #########
 ## FastSurfer
 #########
+export FASTSURFER_HOME=/project/Neuro-IX/software/FastSurfer
+alias fastsurfer='$FASTSURFER_HOME/run_fastsurfer.sh'
 export PYTHONPATH="/project/Neuro-IX/software/miniconda3/bin/python:/project/Neuro-IX/software/FastSurfer"
