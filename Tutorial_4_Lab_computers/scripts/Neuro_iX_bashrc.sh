@@ -27,3 +27,7 @@ alias slicer='/project/Neuro-IX/software/Slicer-5.6.0-linux-amd64/Slicer'
 export PATH="/project/Neuro-IX/software/miniconda3/bin:/home/user/miniconda3/condabin:$PATH"
 source "/project/Neuro-IX/software/miniconda3/bin/activate"
 
+#########
+## FastSurfer
+#########
+export PYTHONPATH="/project/Neuro-IX/software/miniconda3/bin/python:/project/Neuro-IX/software/FastSurfer"
