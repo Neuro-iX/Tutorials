@@ -18,8 +18,8 @@ source $FREESURFER_HOME/SetUpFreeSurfer.sh
 #########
 ## Slicer Setup
 #########
-export SITK_SHOW_COMMAND=/project/Neuro-IX/software/Slicer-5.6.0-linux-amd64
-alias slicer='/project/Neuro-IX/software/Slicer-5.6.0-linux-amd64/Slicer'
+export SITK_SHOW_COMMAND=/project/Neuro-IX/software/Slicer-5.6.1-linux-amd64
+alias slicer='$SITK_SHOW_COMMAND/Slicer'
 
 #########
 ## Miniconda3 Setup
