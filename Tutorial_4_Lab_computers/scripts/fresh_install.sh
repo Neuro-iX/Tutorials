@@ -1,8 +1,16 @@
 # Installing last vs code 
 
-sudo wget 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -O /tmp/code_latest_amd64.deb
-sudo dpkg -i /tmp/code_latest_amd64.deb
+wget 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -O /tmp/code_latest_amd64.deb
+dpkg -i /tmp/code_latest_amd64.deb
 
+# Installing for Globus : https://docs.globus.org/globus-connect-personal/install/linux/
+
+#apt-get install tk tcllib #Prerequisite
+#wget https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz
+#tar xzf globusconnectpersonal-latest.tgz
+
+# cd globusconnectpersonal*
+# ./globusconnectpersonal
 
 # Installing discord
 
