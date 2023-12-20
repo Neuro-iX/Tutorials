@@ -35,7 +35,7 @@ apt install -y anydesk
 ######
 # Installing Zotero (No sudo)
 ######
-
+2023/12/20 18:03:54  info unpack layer: sha256:cbe3537751ce03ea42788c2fbe2d5
 wget -q "https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=6.0.27" -O ~/Downloads/zotero_latest.tar.bz2
 tar -xjf ~/Downloads/zotero_latest.tar.bz2 -C $HOME
 mv Zotero_linux-x86_64 Zotero
@@ -63,5 +63,8 @@ source "$HOME/miniconda3/bin/activate"
 # Singularity
 ######
 
-conda install -c conda-forge singularity
-apt install python-is-python3 #Avoid /usr/bin/env: python: No such file or directory
+#conda install -c conda-forge singularity
+#apt install python-is-python3 #Avoid /usr/bin/env: python: No such file or directory
+#export SINGULARITY_CACHEDIR=/project/Neuro-IX/software/.singularity
+#sudo -E singularity build fastsurfer-gpu.sif docker://deepmi/fastsurfer:latest
+
