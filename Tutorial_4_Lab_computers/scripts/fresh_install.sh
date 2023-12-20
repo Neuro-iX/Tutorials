@@ -64,10 +64,6 @@ source "$HOME/miniconda3/bin/activate"
 ######
 #TO TEST
 
-wget https://github.com/sylabs/singularity/releases/download/v4.0.2/singularity-ce-4.0.2.tar.gz ~/Downloads/singularity-ce-4.0.2.tar.gz #Use latest link?
-tar -C ~/Documents -xzf ~/Downloads/singularity-ce-4.0.2.tar.gz
-rm ~/Downloads/singularity-ce-4.0.2.tar.gz
-
 #Dependencies
 apt-get update && sudo apt-get install -y \
     build-essential \
@@ -76,17 +72,31 @@ apt-get update && sudo apt-get install -y \
     libgpgme11-dev \
     squashfs-tools \
     libseccomp-dev \
-    pkg-config
+    pkg-config \
+	autoconf \
+	automake \
+	cryptsetup \
+	fuse3-devel \
+	gcc \
+	glib2-devel \
+	libseccomp-devel \
+	libtool \
+	make \
+	squashfs-tools \
+	zlib-devel
     
 #Go dependency
 export VERSION=1.21.5 OS=linux ARCH=amd64 && \
-  wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz ~/Downloads/go$VERSION.$OS-$ARCH.tar.gz && \
+  wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz && \
   tar -C . -xzvf go$VERSION.$OS-$ARCH.tar.gz && \
   rm go$VERSION.$OS-$ARCH.tar.gz
 
+#rpm dependency
+apt install rpm
+
 #Singularity RPM
 export VERSION=4.0.2 && # adjust this as necessary \
-    wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-ce-${VERSION}.tar.gz  ~/Downloads/singularity-ce-${VERSION}.tar.gz && \
+    wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-ce-${VERSION}.tar.gz && \ #-P ~/Downloads
     rpmbuild -tb --define='_localstatedir /project/Neuro-IX/software' singularity-ce-${VERSION}.tar.gz && \ 
     rpm -ivh ~/rpmbuild/RPMS/x86_64/singularity-$VERSION-1.el7.x86_64.rpm && \
     rm -rf ~/rpmbuild singularity-$VERSION*.tar.gz
