@@ -58,3 +58,10 @@ source "$HOME/.profile"
 
 export PATH="$HOME/miniconda3/bin:$PATH"
 source "$HOME/miniconda3/bin/activate"
+
+######
+# Singularity
+######
+
+conda install -c conda-forge singularity
+apt install python-is-python3 #Avoid /usr/bin/env: python: No such file or directory
