@@ -32,6 +32,8 @@ echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-st
 apt update -y
 apt install -y anydesk
 
+echo "neuro-IX|A-3434" | anydesk --set-password #need sudo, option set-password still visible after config
+
 ######
 # Installing Zotero (No sudo)
 ######
