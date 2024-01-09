@@ -76,6 +76,9 @@ adduser at84490 anaconda
 #cat > /tmp/fresh_install_subscript.sh <<EOF
 #source ~/.bashrc
 #source /opt/anaconda/bin/activate #Has to be executed as not-root
+#conda init
+#conda config --set auto_activate_base False
+#conda deactivate
 #EOF
 #chmod 777 /tmp/fresh_install_subscript.sh #give rights
 #su -c '/tmp/fresh_install_subscript.sh' bverreman #executed as not-root (bverreman)
@@ -87,6 +90,7 @@ conda config --set auto_activate_base False # The base environment is not activa
 #conda activate base
 (sleep 10; echo y) | conda install anaconda-navigator
 #'anaconda-navigator' in terminal
+conda deactivate
 
 # Uninstallation
 #conda activate
