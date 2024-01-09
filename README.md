@@ -11,16 +11,15 @@ You are welcome to update/improve previous tutorials or add your own one.
 
 ## Launching
 
-Click on the links with :rocket:
+- Click on the links with :rocket:
 
-Alternatively, go to [Google Colab](https://colab.research.google.com)
-
+- Alternatively, go to [Google Colab](https://colab.research.google.com)
 In Github section, print the repository's url:
 ```javascript
 https://github.com/Neuro-iX/Tutorials
 ```
 
-Alternatively, you can launch tutorials using Jupyterlab. \
+- Alternatively, you can launch tutorials using Jupyterlab. \
 See [Tutorial-1 - New member's guidebook](#Tutorial-1).
 
 
