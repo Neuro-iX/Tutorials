@@ -128,7 +128,7 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 apt-get update
 
-apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin #dependencies
+(sleep 10; echo Y) | apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin #dependencies
 docker run hello-world #testing installation
 #'docker' in terminal
 
