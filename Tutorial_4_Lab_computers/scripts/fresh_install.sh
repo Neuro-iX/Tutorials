@@ -1,4 +1,10 @@
 ######
+# SSHFS
+######
+
+apt install sshfsapt install sshfs
+
+######
 # VScode 
 ######
 
@@ -13,15 +19,16 @@ rm /tmp/code_latest_amd64.deb
 
 (sleep 10; echo Y) | apt-get install tk tcllib #Prerequisite
 wget 'https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz' -O /tmp/globusconnectpersonal-latest.tgz
-tar xzf /tmp/globusconnectpersonal-latest.tgz -C /usr/bin
+tar xzf /tmp/globusconnectpersonal-latest.tgz -C $HOME #in $HOME for security measure (rooters can't use it)
+rm /tmp/globusconnectpersonal-latest.tgz
 
-# bash /usr/bin/globusconnectpersonal*/globusconnectpersonal
+# bash $HOME/globusconnectpersonal*/globusconnectpersonal
 #Existing organizational login: Compute Canada
 #Use CCDB login info
 #Create new collection (corresponding to you desktop)
 
 ######
-# Discord
+# Discord Dekstop
 ######
 
 wget "https://discord.com/api/download?platform=linux&format=deb" -O /tmp/latest-discord.deb
@@ -55,7 +62,8 @@ rm /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh
 
 groupadd anaconda
 chgrp -R anaconda /opt/anaconda
-chmod 770 -R /opt/anaconda
+chmod 770 -R /opt/anacond
+#ls -la /opt/anaconda
 
 adduser bverreman anaconda
 adduser sbouix anaconda
@@ -63,6 +71,7 @@ adduser at83760 anaconda
 adduser at90180 anaconda
 adduser at70870 anaconda
 adduser at84490 anaconda
+#cat /etc/group
 
 source ~/.bashrc
 source /opt/anaconda/bin/activate
@@ -88,26 +97,59 @@ conda config --set auto_activate_base False # The base environment is not activa
 ######
 (sleep 10; echo Y) | apt install datalad
 
+######
+# Zotero (No sudo)
+######
+
+wget -q "https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=6.0.27" -O /tmp/zotero_latest.tar.bz2
+tar -xjf /tmp/zotero_latest.tar.bz2 -C $HOME
+mv $HOME/Zotero_linux-x86_64 $HOME/Zotero
+#chmod +x $HOME/Zotero/set_launcher_icon
+#$HOME/Zotero/set_launcher_icon
+#ln -s $HOME/Zotero/zotero.desktop ~/.local/share/applications/zotero.desktop
+
+#bash $HOME/Zotero/zotero
+
+######
+# Docker Dekstop
+######
+
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin #dependencies
+sudo docker run hello-world #testing installation
+#'docker' in terminal
+
+######
+# Apptainer
+######
+
+sudo apt update
+sudo apt install -y software-properties-common
+
+sudo add-apt-repository -y ppa:apptainer/ppa
+sudo apt update
+sudo apt install -y apptainer
 
 ############################
 #EXTRA
 
 ######
-# pip3
+# pip3 
 ######
 #(sleep 10; echo Y) | apt install python3-pip
-
-######
-# Zotero (No sudo)
-######
-
-#2023/12/20 18:03:54  info unpack layer: sha256:cbe3537751ce03ea42788c2fbe2d5
-#wget -q "https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=6.0.27" -O ~/Downloads/zotero_latest.tar.bz2
-#tar -xjf ~/Downloads/zotero_latest.tar.bz2 -C $HOME
-#mv Zotero_linux-x86_64 Zotero
-#chmod +x $HOME/Zotero/set_launcher_icon
-#$HOME/Zotero/set_launcher_icon
-#ln -s $HOME/Zotero/zotero.desktop ~/.local/share/applications/zotero.desktop
 
 ######
 # Miniconda3
