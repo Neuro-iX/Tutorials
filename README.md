@@ -13,7 +13,7 @@ You are welcome to update/improve previous tutorials or add your own one.
 
 - Click on the links with :rocket:
 
-- Alternatively, go to [Google Colab](https://colab.research.google.com)
+- Alternatively, go to [Google Colab](https://colab.research.google.com) \
 In Github section, print the repository's url:
 ```javascript
 https://github.com/Neuro-iX/Tutorials
