@@ -73,8 +73,15 @@ adduser at70870 anaconda
 adduser at84490 anaconda
 #cat /etc/group
 
-source ~/.bashrc
-source /opt/anaconda/bin/activate
+#cat > /tmp/fresh_install_subscript.sh <<EOF
+#source ~/.bashrc
+#source /opt/anaconda/bin/activate #Has to be executed as not-root
+#EOF
+#chmod 777 /tmp/fresh_install_subscript.sh #give rights
+#su -c '/tmp/fresh_install_subscript.sh' bverreman #executed as not-root (bverreman)
+#rm /tmp/fresh_install_subscript.sh 
+
+source /opt/anaconda/bin/activate 
 conda init
 conda config --set auto_activate_base False # The base environment is not activated by default
 #conda activate base
