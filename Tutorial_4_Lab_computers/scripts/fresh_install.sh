@@ -1,3 +1,52 @@
+#!/bin/bash
+
+#################
+## Help
+#################
+Help ()
+{
+builtin echo "
+AUTHOR: Benoît Verreman
+
+LAST UPDATE: 2024-01-10
+
+DESCRIPTION: 
+Common softwares installation script for new computers.
+To be launched as SUDO.
+For Globus and Zotero, change HOME directory as needed.
+
+LIST:
+- SSHFS
+- VScode
+- Globus
+- Discord Desktop
+- Anydesk
+- Anaconda (with anaconda-navigator in base environement)
+- Git
+- Datalad
+- Zotero
+- Docker
+- Apptainer
+"
+}
+
+VALID_ARGS=$(getopt -o h --long help -- "$@")
+
+eval set -- "$VALID_ARGS"
+while [ : ]; do
+  case "$1" in
+    -h | --help)
+    	Help
+    	exit 1
+    	;;
+    --) shift; 
+      echo "Invalid argument given"
+      break 
+      ;;
+  esac
+done
+
+###############################
 ######
 # SSHFS
 ######
