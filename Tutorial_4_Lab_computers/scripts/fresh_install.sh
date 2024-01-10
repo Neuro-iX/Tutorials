@@ -15,7 +15,12 @@ Common softwares installation script for new computers.
 To be launched as SUDO.
 For Globus and Zotero, change HOME directory as needed.
 
-LIST:
+EXAMPLE OF USAGE:
+sudo su
+bash test.sh -h
+bash test.sh
+
+LIST OF SOFTWARES:
 - SSHFS
 - VScode
 - Globus
