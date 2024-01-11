@@ -55,10 +55,10 @@ apt update
 apt install puppet-agent
 
 echo "
-192.168.15.210 puppetmaster
-192.168.15.210 puppet
-192.168.15.210 puppetmaster.logti053235l
-192.168.15.210 puppet.logti053235l
+10.180.169.71 puppetmaster
+10.180.169.71 puppet
+10.180.169.71 puppetmaster.logti053235l
+10.180.169.71 puppet.logti053235l
 " >> /etc/hosts
 
 #https://puppet.com/docs/puppet/latest/config_file_main.html
