@@ -55,7 +55,6 @@ apt update
 apt install puppet-agent
 
 echo "
-vi 
 192.168.15.210 puppetmaster
 192.168.15.210 puppet
 192.168.15.210 puppetmaster.logti053235l
