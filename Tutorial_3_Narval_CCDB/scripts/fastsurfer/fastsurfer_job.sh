@@ -7,8 +7,8 @@
 ##SBATCH --ntasks=1
 ##SBATCH --mem-per-cpu=4000 
 
-#SBATCH --job-name freesurfer741_job
-#SBATCH --output=output_freesurfer741_%j.txt
+#SBATCH --job-name fastsurfer_job
+#SBATCH --output=output_fastsurfer_%j.txt
 #SBATCH --open-mode=append
 
 ##SBATCH --mail-user=...@...
