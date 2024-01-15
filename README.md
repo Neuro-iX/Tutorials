@@ -50,7 +50,10 @@ Learning outcomes
 0. Freesurfer overview
 1. Freesurfer installation/build
 2. Freesurfer tutorials
-   
+3. Fastsurfer tutorials \
+  a) Fastsurfer overview \
+  b) Optional flags
+
 ## Tutorial-3
 
 :rocket: [**Narval**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_3_Narval_CCDB/Tutorial_3_Narval.ipynb)
@@ -63,8 +66,9 @@ Learning outcomes
     a) Storage and file management on Narval \
     b) Datasets in data
 3. Basic commands on a Narval node
-4. SLURM job templates
-
+4. SLURM job templates \
+  a) Freesurfer 7.4.1 container \
+  b) Fastsurfer container
 
 ## Tutorial-4
 
