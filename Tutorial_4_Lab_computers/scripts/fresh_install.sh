@@ -53,7 +53,6 @@ while [ : ]; do
     	exit 1
     	;;
     --) shift; 
-      echo "Invalid argument given"
       break 
       ;;
   esac
