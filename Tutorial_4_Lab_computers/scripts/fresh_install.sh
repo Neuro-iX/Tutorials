@@ -8,20 +8,22 @@ Help ()
 builtin echo "
 AUTHOR: Benoît Verreman
 
-LAST UPDATE: 2024-01-10
+LAST UPDATE: 2024-01-17
 
 DESCRIPTION: 
 Common softwares installation script for new computers.
+Don't reinstall any existing software.
 To be launched as SUDO.
-For Globus and Zotero, change HOME directory as needed.
+For Globus and Zotero, you HAVE TO give a HOME path directory using -p.
 
 EXAMPLE OF USAGE:
 sudo su
 bash test.sh -h
-bash test.sh
+bash test.sh -p /home/at83760
 
 LIST OF SOFTWARES:
 - SSHFS
+- CUDA with update-alternatives
 - VScode
 - Globus
 - Discord Desktop
@@ -35,11 +37,17 @@ LIST OF SOFTWARES:
 "
 }
 
-VALID_ARGS=$(getopt -o h --long help -- "$@")
+unset -v HOME_PATH
+
+VALID_ARGS=$(getopt -o p:h --long path:,help -- "$@")
 
 eval set -- "$VALID_ARGS"
 while [ : ]; do
   case "$1" in
+    -p | --path)
+      HOME_PATH=$2
+      shift 2
+      ;;
     -h | --help)
     	Help
     	exit 1
@@ -51,30 +59,59 @@ while [ : ]; do
   esac
 done
 
+# Test if user provided HOME_PATH
+: ${HOME_PATH:?Missing argument --path or -p}
+
 ###############################
 ######
 # SSHFS
 ######
+which sshfs >/dev/null 2>&1
+if [ $? -eq 1 ]; then
+    apt install sshfs
+fi
 
-apt install sshfs
+######
+# CUDA
+######
+which cuda >/dev/null 2>&1
+if [ $? -eq 1 ]; then
+  wget https://developer.download.nvidia.com/compute/cuda/12.2.0/local_installers/cuda_12.2.0_535.54.03_linux.run
+  chmod +x cuda_12.2.0_535.54.03_linux.run
+  sudo ./cuda_12.2.0_535.54.03_linux.run --silent --toolkit
+  
+  update-alternatives --install /usr/bin/cuda cuda /usr/local/cuda-12.2/bin 100
+  echo "export PATH=/usr/local/cuda/bin:$PATH" >>  $HOME_PATH/.bashrc
+  echo "LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH" >>  $HOME_PATH/.bashrc
+  
+  #update-alternatives --list cuda
+  #nvcc --version
+
+  #sudo update-alternatives --set cuda /usr/local/cuda-11.8/bin #change the cuda version
+  #update-alternatives --get-selections #list all categrories
+fi
 
 ######
 # VScode 
 ######
+which code >/dev/null 2>&1
+if [ $? -eq 1 ]; then
+    wget 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -O /tmp/code_latest_amd64.deb
+    dpkg -i /tmp/code_latest_amd64.deb
+    rm /tmp/code_latest_amd64.deb
+    #'code' in terminal
+fi
 
-wget 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -O /tmp/code_latest_amd64.deb
-dpkg -i /tmp/code_latest_amd64.deb
-rm /tmp/code_latest_amd64.deb
-#'code' in terminal
 
 ######
 # Globus : https://docs.globus.org/globus-connect-personal/install/linux/
 ######
-
-(sleep 10; echo Y) | apt-get install tk tcllib #Prerequisite
-wget 'https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz' -O /tmp/globusconnectpersonal-latest.tgz
-tar xzf /tmp/globusconnectpersonal-latest.tgz -C $HOME #in $HOME for security measure (rooters can't use it)
-rm /tmp/globusconnectpersonal-latest.tgz
+if ! [ -d $HOME_PATH/globus* ]; then 
+    (sleep 10; echo Y) | apt-get install tk tcllib;
+    wget 'https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz' -O /tmp/globusconnectpersonal-latest.tgz;
+    tar xzf /tmp/globusconnectpersonal-latest.tgz -C $HOME_PATH;
+    rm /tmp/globusconnectpersonal-latest.tgz;
+fi
 
 # bash $HOME/globusconnectpersonal*/globusconnectpersonal
 #Existing organizational login: Compute Canada
@@ -84,129 +121,148 @@ rm /tmp/globusconnectpersonal-latest.tgz
 ######
 # Discord Dekstop
 ######
-
-wget "https://discord.com/api/download?platform=linux&format=deb" -O /tmp/latest-discord.deb
-dpkg -i /tmp/latest-discord.deb
-rm /tmp/latest-discord.deb
-#'discord' in terminal
+which discord >/dev/null 2>&1
+if [ $? -eq 1 ]; then
+    wget "https://discord.com/api/download?platform=linux&format=deb" -O /tmp/latest-discord.deb
+    dpkg -i /tmp/latest-discord.deb
+    rm /tmp/latest-discord.deb
+    #'discord' in terminal
+fi
 
 ######
 # Anydesk
 ######
-
-wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
-echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list
-apt update -y
-apt install -y anydesk
-#'anydesk' in terminal
-
-echo "neuro-IX|A-3434" | anydesk --set-password #Works even if option set-password still visible
+which anydesk >/dev/null 2>&1
+if [ $? -eq 1 ]; then
+    wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
+    echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list
+    apt update -y
+    apt install -y anydesk
+    #'anydesk' in terminal
+    
+    echo "neuro-IX|A-3434" | anydesk --set-password #Works even if option set-password still visible
+fi
 
 ######
 # Anaconda
 ######
-#Multi-user installation: https://askubuntu.com/questions/1457726/how-and-where-to-install-conda-to-be-accessible-to-all-users
-
-#Dependencies
-(sleep 10; echo y) | sudo apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
-
-wget https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh -O /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh 
-bash /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh -b -p /opt/anaconda #not on /usr/bin because of writing restrictions
-rm /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh 
-
-groupadd anaconda
-chgrp -R anaconda /opt/anaconda
-chmod 770 -R /opt/anacond
-#ls -la /opt/anaconda
-
-adduser bverreman anaconda
-adduser sbouix anaconda
-adduser at83760 anaconda
-adduser at90180 anaconda
-adduser at70870 anaconda
-adduser at84490 anaconda
-#cat /etc/group
-
-#cat > /tmp/fresh_install_subscript.sh <<EOF
-#source ~/.bashrc
-#source /opt/anaconda/bin/activate #Has to be executed as not-root
-#conda init
-#conda config --set auto_activate_base False
-#conda deactivate
-#EOF
-#chmod 777 /tmp/fresh_install_subscript.sh #give rights
-#su -c '/tmp/fresh_install_subscript.sh' bverreman #executed as not-root (bverreman)
-#rm /tmp/fresh_install_subscript.sh 
-
-source /opt/anaconda/bin/activate 
-conda init
-conda config --set auto_activate_base False # The base environment is not activated by default
-#conda activate base
-(sleep 10; echo y) | conda install anaconda-navigator
-#'anaconda-navigator' in terminal
-conda deactivate
-
-# Uninstallation
-#conda activate
-#conda init --reverse --all
-#rm -rf /PATH/TO/ANACONDA
-#source ~/.bashrc
+which conda >/dev/null 2>&1
+if [ $? -eq 1 ]; then
+    #Multi-user installation: https://askubuntu.com/questions/1457726/how-and-where-to-install-conda-to-be-accessible-to-all-users
+    
+    #Dependencies
+    (sleep 10; echo y) | sudo apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+    
+    wget https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh -O /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh 
+    bash /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh -b -p /opt/anaconda #not on /usr/bin because of writing restrictions
+    rm /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh 
+    
+    groupadd anaconda
+    chgrp -R anaconda /opt/anaconda
+    chmod 770 -R /opt/anacond
+    #ls -la /opt/anaconda
+    
+    adduser bverreman anaconda
+    adduser sbouix anaconda
+    adduser at83760 anaconda
+    adduser at90180 anaconda
+    adduser at70870 anaconda
+    adduser at84490 anaconda
+    #cat /etc/group
+    
+    #cat > /tmp/fresh_install_subscript.sh <<EOF
+    #source ~/.bashrc
+    #source /opt/anaconda/bin/activate #Has to be executed as not-root
+    #conda init
+    #conda config --set auto_activate_base False
+    #conda deactivate
+    #EOF
+    #chmod 777 /tmp/fresh_install_subscript.sh #give rights
+    #su -c '/tmp/fresh_install_subscript.sh' bverreman #executed as not-root (bverreman)
+    #rm /tmp/fresh_install_subscript.sh 
+    
+    source /opt/anaconda/bin/activate 
+    conda init
+    conda config --set auto_activate_base False # The base environment is not activated by default
+    #conda activate base
+    (sleep 10; echo y) | conda install anaconda-navigator
+    #'anaconda-navigator' in terminal
+    conda deactivate
+    
+    # Uninstallation
+    #conda activate
+    #conda init --reverse --all
+    #rm -rf /PATH/TO/ANACONDA
+    #source ~/.bashrc
+fi
 
 ######
 # Git
 ######
-(sleep 10; echo Y) | apt install git-all
+which git >/dev/null 2>&1
+if [ $? -eq 1 ]; then
+  (sleep 10; echo Y) | apt install git-all
+fi
 
 ######
 # Datalad
 ######
-(sleep 10; echo Y) | apt install datalad
+which datalad >/dev/null 2>&1
+if [ $? -eq 1 ]; then
+  (sleep 10; echo Y) | apt install datalad
+fi
 
 ######
 # Zotero (No sudo)
 ######
-
-wget -q "https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=6.0.27" -O /tmp/zotero_latest.tar.bz2
-tar -xjf /tmp/zotero_latest.tar.bz2 -C $HOME
-mv $HOME/Zotero_linux-x86_64 $HOME/Zotero
-#chmod +x $HOME/Zotero/set_launcher_icon
-#$HOME/Zotero/set_launcher_icon
-#ln -s $HOME/Zotero/zotero.desktop ~/.local/share/applications/zotero.desktop
-
-#bash $HOME/Zotero/zotero
+if ! [ -d $HOME_PATH/Zotero* ]; then 
+  wget -q "https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=6.0.27" -O /tmp/zotero_latest.tar.bz2
+  tar -xjf /tmp/zotero_latest.tar.bz2 -C $HOME_PATH
+  mv $HOME_PATH/Zotero_linux-x86_64 $HOME_PATH/Zotero
+  #chmod +x $HOME_PATH/Zotero/set_launcher_icon
+  #$HOME_PATH/Zotero/set_launcher_icon
+  #ln -s $HOME_PATH/Zotero/zotero.desktop ~/.local/share/applications/zotero.desktop
+  
+  #bash $HOME/Zotero/zotero
+fi
 
 ######
 # Docker Dekstop
 ######
-
-# Add Docker's official GPG key:
-apt-get update
-apt-get install ca-certificates curl gnupg
-sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-chmod a+r /etc/apt/keyrings/docker.gpg
-
-# Add the repository to Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-apt-get update
-
-(sleep 10; echo Y) | apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin #dependencies
-docker run hello-world #testing installation
-#'docker' in terminal
+which docker >/dev/null 2>&1
+if [ $? -eq 1 ]; then
+    # Add Docker's official GPG key:
+    apt-get update
+    apt-get install ca-certificates curl gnupg
+    sudo install -m 0755 -d /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    chmod a+r /etc/apt/keyrings/docker.gpg
+    
+    # Add the repository to Apt sources:
+    echo \
+      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+      $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    apt-get update
+    
+    (sleep 10; echo Y) | apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin #dependencies
+    docker run hello-world #testing installation
+    #'docker' in terminal
+fi
 
 ######
 # Apptainer
 ######
+which apptainer >/dev/null 2>&1
+if [ $? -eq 1 ]; then
+    apt update
+    apt install -y software-properties-common
+    
+    add-apt-repository -y ppa:apptainer/ppa
+    apt update
+    apt install -y apptainer
+fi
 
-apt update
-apt install -y software-properties-common
-
-add-apt-repository -y ppa:apptainer/ppa
-apt update
-apt install -y apptainer
 
 ############################
 #EXTRA
