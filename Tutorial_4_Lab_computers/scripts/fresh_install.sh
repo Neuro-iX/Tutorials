@@ -76,13 +76,14 @@ fi
 ######
 which cuda >/dev/null 2>&1
 if [ $? -eq 1 ]; then
-  wget https://developer.download.nvidia.com/compute/cuda/12.2.0/local_installers/cuda_12.2.0_535.54.03_linux.run
-  chmod +x cuda_12.2.0_535.54.03_linux.run
-  sudo ./cuda_12.2.0_535.54.03_linux.run --silent --toolkit
+  wget 'https://developer.download.nvidia.com/compute/cuda/12.2.0/local_installers/cuda_12.2.0_535.54.03_linux.run' -O /tmp/cuda_12.2.0_535.54.03_linux.run;
+  chmod +x /tmp/cuda_12.2.0_535.54.03_linux.run;
+  sudo ./tmp/cuda_12.2.0_535.54.03_linux.run --silent --toolkit;
   
   update-alternatives --install /usr/bin/cuda cuda /usr/local/cuda-12.2/bin 100
-  echo "export PATH=/usr/local/cuda/bin:$PATH" >>  $HOME_PATH/.bashrc
-  echo "LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH" >>  $HOME_PATH/.bashrc
+  echo '### CUDA' >> $HOME_PATH/.bashrc
+  echo 'export PATH=/usr/local/cuda/bin:$PATH' >> $HOME_PATH/.bashrc
+  echo 'LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> $HOME_PATH/.bashrc
   
   #update-alternatives --list cuda
   #nvcc --version
