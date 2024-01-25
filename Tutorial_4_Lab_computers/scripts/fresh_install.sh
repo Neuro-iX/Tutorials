@@ -34,6 +34,7 @@ LIST OF SOFTWARES:
 - Zotero
 - Docker
 - Apptainer
+- Slicer
 "
 }
 
@@ -83,6 +84,7 @@ if [ $? -eq 1 ]; then
   sudo ./tmp/$var2 --silent --toolkit;
   
   update-alternatives --install /usr/bin/cuda cuda /usr/local/cuda-$var3/bin 100
+  echo '' >> $HOME_PATH/.bashrc
   echo '### CUDA' >> $HOME_PATH/.bashrc
   echo 'export PATH=/usr/local/cuda/bin:$PATH' >> $HOME_PATH/.bashrc
   echo 'LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> $HOME_PATH/.bashrc
@@ -234,23 +236,23 @@ fi
 ######
 which docker >/dev/null 2>&1
 if [ $? -eq 1 ]; then
-    # Add Docker's official GPG key:
-    apt-get update
-    apt-get install ca-certificates curl gnupg
-    sudo install -m 0755 -d /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-    chmod a+r /etc/apt/keyrings/docker.gpg
-    
-    # Add the repository to Apt sources:
-    echo \
-      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-      $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    apt-get update
-    
-    (sleep 10; echo Y) | apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin #dependencies
-    docker run hello-world #testing installation
-    #'docker' in terminal
+  # Add Docker's official GPG key:
+  apt-get update
+  apt-get install ca-certificates curl gnupg
+  sudo install -m 0755 -d /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  chmod a+r /etc/apt/keyrings/docker.gpg
+  
+  # Add the repository to Apt sources:
+  echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  apt-get update
+  
+  (sleep 10; echo Y) | apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin #dependencies
+  docker run hello-world #testing installation
+  #'docker' in terminal
 fi
 
 ######
@@ -258,14 +260,28 @@ fi
 ######
 which apptainer >/dev/null 2>&1
 if [ $? -eq 1 ]; then
-    apt update
-    apt install -y software-properties-common
-    
-    add-apt-repository -y ppa:apptainer/ppa
-    apt update
-    apt install -y apptainer
+  apt update
+  apt install -y software-properties-common
+  
+  add-apt-repository -y ppa:apptainer/ppa
+  apt update
+  apt install -y apptainer
 fi
 
+
+######
+# Slicer 
+######
+if ! [ -d $HOME_PATH/Slicer* ]; then 
+  wget https://download.slicer.org/bitstream/657813b183a3201b44d4e6f7 -O /tmp/slicer.tar.gz
+  tar xzf /tmp/slicer.tar.gz -C $HOME_PATH
+  rm /tmp/slicer.tar.gz
+  
+  echo '' >> $HOME_PATH/.bashrc
+  echo '### Slicer' >> $HOME_PATH/.bashrc
+  echo "export SITK_SHOW_COMMAND=$HOME_PATH/Slicer*" >> $HOME_PATH/.bashrc
+  echo 'alias slicer=$SITK_SHOW_COMMAND/Slicer' >> $HOME_PATH/.bashrc
+fi
 
 ############################
 #EXTRA
