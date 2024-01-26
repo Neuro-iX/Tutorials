@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Create variables to list which software was already installed, which was installed at the end of the script, and which installation failed
+# Create variables to list which software was already installed, which was installed by the current execution of the script, and which installation failed
 export list="SSHFS CUDA VSCODE GLOBUS DISCORD ANYDESK ANACONDA GIT DATALAD ZOTERO DOCKER APPTAINER SLICER"
 for i in $list; do export $i=0; done
 
@@ -52,7 +52,7 @@ while [ : ]; do
 done
 
 # Test if user provided HOME_PATH
-: ${HOME_PATH:?Missing argument --path or -p}
+: ${HOME_PATH:?Missing argument HOME_PATH using option --path or -p}
 
 ###############################
 ######
@@ -61,12 +61,14 @@ done
 which sshfs >/dev/null 2>&1
 if [ $? -eq 1 ]; then
   apt install sshfs
+  
   export SSHFS=1
+  which sshfs >/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    export SSHFS=2
+  fi
 fi
-which sshfs >/dev/null 2>&1
-if [ $? -eq 0 ]; then
-  export SSHFS=2
-fi
+
 
 ######
 # CUDA
@@ -91,11 +93,12 @@ if [ $? -eq 1 ]; then
   
   #sudo update-alternatives --set cuda /usr/local/cuda-11.8/bin #change the cuda version
   #update-alternatives --get-selections #list all categrories
+  
   export CUDA=1
-fi
-which cuda >/dev/null 2>&1
-if [ $? -eq 0 ]; then
-  export CUDA=2
+  which cuda >/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    export CUDA=2
+  fi
 fi
 
 ######
@@ -107,12 +110,14 @@ if [ $? -eq 1 ]; then
   dpkg -i /tmp/code_latest_amd64.deb
   rm /tmp/code_latest_amd64.deb
   #'code' in terminal
+  
   export CODE=1
+  which code >/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    export CODE=2
+  fi
 fi
-which code >/dev/null 2>&1
-if [ $? -eq 0 ]; then
-  export CODE=2
-fi
+
 
 ######
 # Globus : https://docs.globus.org/globus-connect-personal/install/linux/
@@ -122,11 +127,13 @@ if ! [ -d $HOME_PATH/globus* ]; then
   wget 'https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz' -O /tmp/globusconnectpersonal-latest.tgz;
   tar xzf /tmp/globusconnectpersonal-latest.tgz -C $HOME_PATH;
   rm /tmp/globusconnectpersonal-latest.tgz;
+  
   export GLOBUS=1
+  if [ -d $HOME_PATH/globus* ]; then 
+    export GLOBUS=2
+  fi
 fi
-if [ -d $HOME_PATH/globus* ]; then 
-  export GLOBUS=2
-fi
+
 
 
 # bash $HOME/globusconnectpersonal*/globusconnectpersonal
@@ -139,16 +146,18 @@ fi
 ######
 which discord >/dev/null 2>&1
 if [ $? -eq 1 ]; then
-    wget "https://discord.com/api/download?platform=linux&format=deb" -O /tmp/latest-discord.deb
-    dpkg -i /tmp/latest-discord.deb
-    rm /tmp/latest-discord.deb
-    #'discord' in terminal
+  wget "https://discord.com/api/download?platform=linux&format=deb" -O /tmp/latest-discord.deb
+  dpkg -i /tmp/latest-discord.deb
+  rm /tmp/latest-discord.deb
+  #'discord' in terminal
+    
   export DISCORD=1
+  which discord >/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    export DISCORD=2
+  fi
 fi
-which discord >/dev/null 2>&1
-if [ $? -eq 0 ]; then
-  export DISCORD=2
-fi
+
 
 ######
 # Anydesk
@@ -162,12 +171,14 @@ if [ $? -eq 1 ]; then
   #'anydesk' in terminal
   
   echo "neuro-IX|A-3434" | anydesk --set-password #Works even if option set-password still visible
+  
   export ANYDESK=1
+  which anydesk >/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    export ANYDESK=2
+  fi
 fi
-which anydesk >/dev/null 2>&1
-if [ $? -eq 0 ]; then
-  export ANYDESK=2
-fi
+
 ######
 # Anaconda
 ######
@@ -219,12 +230,14 @@ if [ $? -eq 1 ]; then
   #conda init --reverse --all
   #rm -rf /PATH/TO/ANACONDA
   #source ~/.bashrc
+  
   export CONDA=1
+  which conda >/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    export CONDA=2
+  fi
 fi
-which conda >/dev/null 2>&1
-if [ $? -eq 0 ]; then
-  export CONDA=2
-fi
+
 
 ######
 # Git
@@ -232,12 +245,14 @@ fi
 which git >/dev/null 2>&1
 if [ $? -eq 1 ]; then
   (sleep 10; echo Y) | apt install git-all
+  
   export GIT=1
+  which git >/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    export GIT=2
+  fi
 fi
-which git >/dev/null 2>&1
-if [ $? -eq 0 ]; then
-  export GIT=2
-fi
+
 
 ######
 # Datalad
@@ -245,12 +260,14 @@ fi
 which datalad >/dev/null 2>&1
 if [ $? -eq 1 ]; then
   (sleep 10; echo Y) | apt install datalad
+  
   export DATALAD=1
+  which datalad >/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    export DATALAD=2
+  fi
 fi
-which datalad >/dev/null 2>&1
-if [ $? -eq 0 ]; then
-  export DATALAD=2
-fi
+
 
 ######
 # Zotero (No sudo)
@@ -264,10 +281,11 @@ if ! [ -d $HOME_PATH/Zotero* ]; then
   #ln -s $HOME_PATH/Zotero/zotero.desktop ~/.local/share/applications/zotero.desktop
   
   #bash $HOME/Zotero/zotero
+  
   export ZOTERO=1
-fi
-if [ -d $HOME_PATH/Zotero* ]; then 
-  export ZOTERO=2
+  if [ -d $HOME_PATH/Zotero* ]; then 
+    export ZOTERO=2
+  fi
 fi
 
 ######
@@ -292,11 +310,12 @@ if [ $? -eq 1 ]; then
   (sleep 10; echo Y) | apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin #dependencies
   docker run hello-world #testing installation
   #'docker' in terminal
+  
   export DOCKER=1
-fi
-which docker >/dev/null 2>&1
-if [ $? -eq 0 ]; then
-  export DOCKER=2
+  which docker >/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    export DOCKER=2
+  fi
 fi
 
 ######
@@ -310,12 +329,14 @@ if [ $? -eq 1 ]; then
   add-apt-repository -y ppa:apptainer/ppa
   apt update
   apt install -y apptainer
+  
   export APPTAINER=1
+  which apptainer >/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    export APPTAINER=2
+  fi
 fi
-which apptainer >/dev/null 2>&1
-if [ $? -eq 0 ]; then
-  export APPTAINER=2
-fi
+
 
 
 ######
@@ -330,15 +351,26 @@ if ! [ -d $HOME_PATH/Slicer* ]; then
   echo '### Slicer' >> $HOME_PATH/.bashrc
   echo "export SITK_SHOW_COMMAND=$HOME_PATH/Slicer*" >> $HOME_PATH/.bashrc
   echo 'alias slicer=$SITK_SHOW_COMMAND/Slicer' >> $HOME_PATH/.bashrc
+  
   export SLICER=1
-fi
-if [ -d $HOME_PATH/Slicer* ]; then 
-  export SLICER=2
+  if [ -d $HOME_PATH/Slicer* ]; then 
+    export SLICER=2
+  fi
 fi
 
 
 #### Print result
-for i in $list; do var=${!i}; echo $i; echo $var; done
+for i in $list; do 
+  var=${!i} 
+  case "$var" in
+    0) echo "$i was already installed"
+      ;;
+    1) echo "$i installation failed !"
+    	;;
+    2) echo "$i installation succeeded"
+      ;;
+  esac
+done
 
 
 ############################
