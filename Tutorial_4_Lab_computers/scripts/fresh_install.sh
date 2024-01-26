@@ -69,7 +69,6 @@ if [ $? -eq 1 ]; then
   fi
 fi
 
-
 ######
 # CUDA
 ######
@@ -111,13 +110,12 @@ if [ $? -eq 1 ]; then
   rm /tmp/code_latest_amd64.deb
   #'code' in terminal
   
-  export CODE=1
+  export VSCODE=1
   which code >/dev/null 2>&1
   if [ $? -eq 0 ]; then
-    export CODE=2
+    export VSCODE=2
   fi
 fi
-
 
 ######
 # Globus : https://docs.globus.org/globus-connect-personal/install/linux/
@@ -133,8 +131,6 @@ if ! [ -d $HOME_PATH/globus* ]; then
     export GLOBUS=2
   fi
 fi
-
-
 
 # bash $HOME/globusconnectpersonal*/globusconnectpersonal
 #Existing organizational login: Compute Canada
@@ -157,7 +153,6 @@ if [ $? -eq 1 ]; then
     export DISCORD=2
   fi
 fi
-
 
 ######
 # Anydesk
@@ -231,13 +226,12 @@ if [ $? -eq 1 ]; then
   #rm -rf /PATH/TO/ANACONDA
   #source ~/.bashrc
   
-  export CONDA=1
+  export ANACONDA=1
   which conda >/dev/null 2>&1
   if [ $? -eq 0 ]; then
-    export CONDA=2
+    export ANACONDA=2
   fi
 fi
-
 
 ######
 # Git
@@ -253,7 +247,6 @@ if [ $? -eq 1 ]; then
   fi
 fi
 
-
 ######
 # Datalad
 ######
@@ -267,7 +260,6 @@ if [ $? -eq 1 ]; then
     export DATALAD=2
   fi
 fi
-
 
 ######
 # Zotero (No sudo)
@@ -337,8 +329,6 @@ if [ $? -eq 1 ]; then
   fi
 fi
 
-
-
 ######
 # Slicer 
 ######
@@ -357,7 +347,6 @@ if ! [ -d $HOME_PATH/Slicer* ]; then
     export SLICER=2
   fi
 fi
-
 
 #### Print result
 for i in $list; do 
