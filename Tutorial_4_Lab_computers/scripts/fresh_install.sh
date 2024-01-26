@@ -12,13 +12,13 @@ Help ()
 builtin echo "
 AUTHOR: Benoît Verreman
 
-LAST UPDATE: 2024-01-17
+LAST UPDATE: 2024-01-26
 
 DESCRIPTION: 
 Common softwares installation script for new computers.
 Don't reinstall any existing software.
 To be launched as SUDO.
-For Globus and Zotero, you HAVE TO give a HOME path directory using -p.
+For Globus and Zotero, you HAVE TO give a HOME path directory using -p or --path.
 
 EXAMPLE OF USAGE:
 sudo su
@@ -75,12 +75,12 @@ fi
 ######
 which cuda >/dev/null 2>&1
 if [ $? -eq 1 ]; then
-  export var = "12.2.0"
-  export var2 = "cuda_12.2.0_535.54.03_linux.run"
-  export var3 = "12.2"
+  export var="12.2.0"
+  export var2="cuda_12.2.0_535.54.03_linux.run"
+  export var3="12.2"
   wget "https://developer.download.nvidia.com/compute/cuda/$var/local_installers/$var2" -O /tmp/$var2;
   chmod +x /tmp/$var2;
-  sudo ./tmp/$var2 --silent --toolkit;
+  sudo /tmp/$var2 --silent --toolkit;
   
   update-alternatives --install /usr/bin/cuda cuda /usr/local/cuda-$var3/bin 100
   echo '' >> $HOME_PATH/.bashrc
