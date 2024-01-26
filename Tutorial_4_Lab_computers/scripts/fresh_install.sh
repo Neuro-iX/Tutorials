@@ -74,6 +74,11 @@ fi
 ######
 which cuda >/dev/null 2>&1
 if [ $? -eq 1 ]; then
+
+  nvcc --version >/dev/null 2>&1
+  if [ $? -eq 1 ]; then
+    apt install -y nvidia-cuda-toolkit
+  fi
   export var="12.2.0"
   export var2="cuda_12.2.0_535.54.03_linux.run"
   export var3="12.2"
@@ -81,14 +86,16 @@ if [ $? -eq 1 ]; then
   chmod +x /tmp/$var2;
   sudo /tmp/$var2 --silent --toolkit;
   
-  update-alternatives --install /usr/bin/cuda cuda /usr/local/cuda-$var3/bin 100
+  update-alternatives --install /usr/local/cuda cuda /usr/local/cuda-$var3/bin 100
+  update-alternatives --set cuda /usr/local/cuda-$var3/bin
   echo '' >> $HOME_PATH/.bashrc
   echo '### CUDA' >> $HOME_PATH/.bashrc
-  echo 'export PATH=/usr/local/cuda/bin:$PATH' >> $HOME_PATH/.bashrc
-  echo 'LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> $HOME_PATH/.bashrc
+  echo 'export PATH=/usr/local/cuda:$PATH' >> $HOME_PATH/.bashrc
+  #echo 'LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> $HOME_PATH/.bashrc
   
   #update-alternatives --list cuda
   #nvcc --version
+  #nvidia-smi
   
   #sudo update-alternatives --set cuda /usr/local/cuda-11.8/bin #change the cuda version
   #update-alternatives --get-selections #list all categrories
