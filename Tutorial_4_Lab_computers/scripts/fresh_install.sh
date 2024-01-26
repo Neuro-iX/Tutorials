@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Create variables to list which software was already installed, which was installed at the end of the script, and which installation failed
+export list="SSHFS CUDA VSCODE GLOBUS DISCORD ANYDESK ANACONDA GIT DATALAD ZOTERO DOCKER APPTAINER SLICER"
+for i in $list; do export $i=0; done
+
 #################
 ## Help
 #################
@@ -22,20 +26,8 @@ bash test.sh -h
 bash test.sh -p /home/at83760
 
 LIST OF SOFTWARES:
-- SSHFS
-- CUDA with update-alternatives
-- VScode
-- Globus
-- Discord Desktop
-- Anydesk
-- Anaconda (with anaconda-navigator in base environement)
-- Git
-- Datalad
-- Zotero
-- Docker
-- Apptainer
-- Slicer
 "
+for i in $list; do echo $i; done
 }
 
 unset -v HOME_PATH
@@ -68,7 +60,12 @@ done
 ######
 which sshfs >/dev/null 2>&1
 if [ $? -eq 1 ]; then
-    apt install sshfs
+  apt install sshfs
+  export SSHFS=1
+fi
+which sshfs >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+  export SSHFS=2
 fi
 
 ######
@@ -91,9 +88,14 @@ if [ $? -eq 1 ]; then
   
   #update-alternatives --list cuda
   #nvcc --version
-
+  
   #sudo update-alternatives --set cuda /usr/local/cuda-11.8/bin #change the cuda version
   #update-alternatives --get-selections #list all categrories
+  export CUDA=1
+fi
+which cuda >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+  export CUDA=2
 fi
 
 ######
@@ -101,22 +103,31 @@ fi
 ######
 which code >/dev/null 2>&1
 if [ $? -eq 1 ]; then
-    wget 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -O /tmp/code_latest_amd64.deb
-    dpkg -i /tmp/code_latest_amd64.deb
-    rm /tmp/code_latest_amd64.deb
-    #'code' in terminal
+  wget 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -O /tmp/code_latest_amd64.deb
+  dpkg -i /tmp/code_latest_amd64.deb
+  rm /tmp/code_latest_amd64.deb
+  #'code' in terminal
+  export CODE=1
 fi
-
+which code >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+  export CODE=2
+fi
 
 ######
 # Globus : https://docs.globus.org/globus-connect-personal/install/linux/
 ######
 if ! [ -d $HOME_PATH/globus* ]; then 
-    (sleep 10; echo Y) | apt-get install tk tcllib;
-    wget 'https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz' -O /tmp/globusconnectpersonal-latest.tgz;
-    tar xzf /tmp/globusconnectpersonal-latest.tgz -C $HOME_PATH;
-    rm /tmp/globusconnectpersonal-latest.tgz;
+  (sleep 10; echo Y) | apt-get install tk tcllib;
+  wget 'https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz' -O /tmp/globusconnectpersonal-latest.tgz;
+  tar xzf /tmp/globusconnectpersonal-latest.tgz -C $HOME_PATH;
+  rm /tmp/globusconnectpersonal-latest.tgz;
+  export GLOBUS=1
 fi
+if [ -d $HOME_PATH/globus* ]; then 
+  export GLOBUS=2
+fi
+
 
 # bash $HOME/globusconnectpersonal*/globusconnectpersonal
 #Existing organizational login: Compute Canada
@@ -132,6 +143,11 @@ if [ $? -eq 1 ]; then
     dpkg -i /tmp/latest-discord.deb
     rm /tmp/latest-discord.deb
     #'discord' in terminal
+  export DISCORD=1
+fi
+which discord >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+  export DISCORD=2
 fi
 
 ######
@@ -139,66 +155,75 @@ fi
 ######
 which anydesk >/dev/null 2>&1
 if [ $? -eq 1 ]; then
-    wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
-    echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list
-    apt update -y
-    apt install -y anydesk
-    #'anydesk' in terminal
-    
-    echo "neuro-IX|A-3434" | anydesk --set-password #Works even if option set-password still visible
+  wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
+  echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list
+  apt update -y
+  apt install -y anydesk
+  #'anydesk' in terminal
+  
+  echo "neuro-IX|A-3434" | anydesk --set-password #Works even if option set-password still visible
+  export ANYDESK=1
 fi
-
+which anydesk >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+  export ANYDESK=2
+fi
 ######
 # Anaconda
 ######
 which conda >/dev/null 2>&1
 if [ $? -eq 1 ]; then
-    #Multi-user installation: https://askubuntu.com/questions/1457726/how-and-where-to-install-conda-to-be-accessible-to-all-users
-    
-    #Dependencies
-    (sleep 10; echo y) | sudo apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
-    
-    wget https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh -O /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh 
-    bash /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh -b -p /opt/anaconda #not on /usr/bin because of writing restrictions
-    rm /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh 
-    
-    groupadd anaconda
-    chgrp -R anaconda /opt/anaconda
-    chmod 770 -R /opt/anacond
-    #ls -la /opt/anaconda
-    
-    adduser bverreman anaconda
-    adduser sbouix anaconda
-    adduser at83760 anaconda
-    adduser at90180 anaconda
-    adduser at70870 anaconda
-    adduser at84490 anaconda
-    #cat /etc/group
-    
-    #cat > /tmp/fresh_install_subscript.sh <<EOF
-    #source ~/.bashrc
-    #source /opt/anaconda/bin/activate #Has to be executed as not-root
-    #conda init
-    #conda config --set auto_activate_base False
-    #conda deactivate
-    #EOF
-    #chmod 777 /tmp/fresh_install_subscript.sh #give rights
-    #su -c '/tmp/fresh_install_subscript.sh' bverreman #executed as not-root (bverreman)
-    #rm /tmp/fresh_install_subscript.sh 
-    
-    source /opt/anaconda/bin/activate 
-    conda init
-    conda config --set auto_activate_base False # The base environment is not activated by default
-    #conda activate base
-    (sleep 10; echo y) | conda install anaconda-navigator
-    #'anaconda-navigator' in terminal
-    conda deactivate
-    
-    # Uninstallation
-    #conda activate
-    #conda init --reverse --all
-    #rm -rf /PATH/TO/ANACONDA
-    #source ~/.bashrc
+  #Multi-user installation: https://askubuntu.com/questions/1457726/how-and-where-to-install-conda-to-be-accessible-to-all-users
+  
+  #Dependencies
+  (sleep 10; echo y) | sudo apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+  
+  wget https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh -O /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh 
+  bash /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh -b -p /opt/anaconda #not on /usr/bin because of writing restrictions
+  rm /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh 
+  
+  groupadd anaconda
+  chgrp -R anaconda /opt/anaconda
+  chmod 770 -R /opt/anacond
+  #ls -la /opt/anaconda
+  
+  adduser bverreman anaconda
+  adduser sbouix anaconda
+  adduser at83760 anaconda
+  adduser at90180 anaconda
+  adduser at70870 anaconda
+  adduser at84490 anaconda
+  #cat /etc/group
+  
+  #cat > /tmp/fresh_install_subscript.sh <<EOF
+  #source ~/.bashrc
+  #source /opt/anaconda/bin/activate #Has to be executed as not-root
+  #conda init
+  #conda config --set auto_activate_base False
+  #conda deactivate
+  #EOF
+  #chmod 777 /tmp/fresh_install_subscript.sh #give rights
+  #su -c '/tmp/fresh_install_subscript.sh' bverreman #executed as not-root (bverreman)
+  #rm /tmp/fresh_install_subscript.sh 
+  
+  source /opt/anaconda/bin/activate 
+  conda init
+  conda config --set auto_activate_base False # The base environment is not activated by default
+  #conda activate base
+  (sleep 10; echo y) | conda install anaconda-navigator
+  #'anaconda-navigator' in terminal
+  conda deactivate
+  
+  # Uninstallation
+  #conda activate
+  #conda init --reverse --all
+  #rm -rf /PATH/TO/ANACONDA
+  #source ~/.bashrc
+  export CONDA=1
+fi
+which conda >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+  export CONDA=2
 fi
 
 ######
@@ -207,6 +232,11 @@ fi
 which git >/dev/null 2>&1
 if [ $? -eq 1 ]; then
   (sleep 10; echo Y) | apt install git-all
+  export GIT=1
+fi
+which git >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+  export GIT=2
 fi
 
 ######
@@ -215,6 +245,11 @@ fi
 which datalad >/dev/null 2>&1
 if [ $? -eq 1 ]; then
   (sleep 10; echo Y) | apt install datalad
+  export DATALAD=1
+fi
+which datalad >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+  export DATALAD=2
 fi
 
 ######
@@ -229,6 +264,10 @@ if ! [ -d $HOME_PATH/Zotero* ]; then
   #ln -s $HOME_PATH/Zotero/zotero.desktop ~/.local/share/applications/zotero.desktop
   
   #bash $HOME/Zotero/zotero
+  export ZOTERO=1
+fi
+if [ -d $HOME_PATH/Zotero* ]; then 
+  export ZOTERO=2
 fi
 
 ######
@@ -253,6 +292,11 @@ if [ $? -eq 1 ]; then
   (sleep 10; echo Y) | apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin #dependencies
   docker run hello-world #testing installation
   #'docker' in terminal
+  export DOCKER=1
+fi
+which docker >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+  export DOCKER=2
 fi
 
 ######
@@ -266,6 +310,11 @@ if [ $? -eq 1 ]; then
   add-apt-repository -y ppa:apptainer/ppa
   apt update
   apt install -y apptainer
+  export APPTAINER=1
+fi
+which apptainer >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+  export APPTAINER=2
 fi
 
 
@@ -281,7 +330,16 @@ if ! [ -d $HOME_PATH/Slicer* ]; then
   echo '### Slicer' >> $HOME_PATH/.bashrc
   echo "export SITK_SHOW_COMMAND=$HOME_PATH/Slicer*" >> $HOME_PATH/.bashrc
   echo 'alias slicer=$SITK_SHOW_COMMAND/Slicer' >> $HOME_PATH/.bashrc
+  export SLICER=1
 fi
+if [ -d $HOME_PATH/Slicer* ]; then 
+  export SLICER=2
+fi
+
+
+#### Print result
+for i in $list; do var=${!i}; echo $i; echo $var; done
+
 
 ############################
 #EXTRA
