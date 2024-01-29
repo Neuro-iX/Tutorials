@@ -58,16 +58,16 @@ done
 # group creation for rights management
 ###
 groupadd neuro-ix
-#chgrp -R neuro-ix /opt/anaconda
-#chmod 770 -R /opt/anacond
-#ls -la /opt/anaconda
-
 adduser bverreman neuro-ix
 adduser sbouix neuro-ix
 adduser at83760 neuro-ix
 adduser at90180 neuro-ix
 adduser at70870 neuro-ix
 adduser at84490 neuro-ix
+#chgrp -R neuro-ix /opt/anaconda
+#chmod 770 -R /opt/anacond
+#ls -la /opt/anaconda
+#cat /etc/group
 
 ###############################
 ######
@@ -213,15 +213,6 @@ if [ $? -eq 1 ]; then
   groupadd neuro-ix
   chgrp -R neuro-ix /opt/anaconda
   chmod 770 -R /opt/anacond
-  #ls -la /opt/anaconda
-  
-  adduser bverreman anaconda
-  adduser sbouix anaconda
-  adduser at83760 anaconda
-  adduser at90180 anaconda
-  adduser at70870 anaconda
-  adduser at84490 anaconda
-  #cat /etc/group
   
   #cat > /tmp/fresh_install_subscript.sh <<EOF
   #source ~/.bashrc
