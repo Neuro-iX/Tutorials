@@ -129,6 +129,7 @@ if ! [ -d $HOME_PATH/globus* ]; then
   (sleep 10; echo Y) | apt-get install tk tcllib;
   wget 'https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz' -O /tmp/globusconnectpersonal-latest.tgz;
   tar xzf /tmp/globusconnectpersonal-latest.tgz -C $HOME_PATH;
+  chmod -R 777 $HOME_PATH/globus*
   rm /tmp/globusconnectpersonal-latest.tgz;
   
   export GLOBUS=1
@@ -340,6 +341,7 @@ fi
 if ! [ -d $HOME_PATH/Slicer* ]; then 
   wget https://download.slicer.org/bitstream/657813b183a3201b44d4e6f7 -O /tmp/slicer.tar.gz
   tar xzf /tmp/slicer.tar.gz -C $HOME_PATH
+  chmod -R 777 $HOME_PATH/Slicer*
   rm /tmp/slicer.tar.gz
   
   echo '' >> $HOME_PATH/.bashrc
