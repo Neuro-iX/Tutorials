@@ -54,6 +54,21 @@ done
 # Test if user provided HOME_PATH
 : ${HOME_PATH:?Missing argument HOME_PATH using option --path or -p}
 
+###
+# group creation for rights management
+###
+groupadd neuro-ix
+#chgrp -R neuro-ix /opt/anaconda
+#chmod 770 -R /opt/anacond
+#ls -la /opt/anaconda
+
+adduser bverreman neuro-ix
+adduser sbouix neuro-ix
+adduser at83760 neuro-ix
+adduser at90180 neuro-ix
+adduser at70870 neuro-ix
+adduser at84490 neuro-ix
+
 ###############################
 ######
 # SSHFS
@@ -129,7 +144,8 @@ if ! [ -d $HOME_PATH/globus* ]; then
   (sleep 10; echo Y) | apt-get install tk tcllib;
   wget 'https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz' -O /tmp/globusconnectpersonal-latest.tgz;
   tar xzf /tmp/globusconnectpersonal-latest.tgz -C $HOME_PATH;
-  chmod -R 777 $HOME_PATH/globus*
+  chgrp -R neuro-ix $HOME_PATH/globus*
+  chmod 770 -R $HOME_PATH/globus*
   rm /tmp/globusconnectpersonal-latest.tgz;
   
   export GLOBUS=1
@@ -194,8 +210,8 @@ if [ $? -eq 1 ]; then
   bash /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh -b -p /opt/anaconda #not on /usr/bin because of writing restrictions
   rm /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh 
   
-  groupadd anaconda
-  chgrp -R anaconda /opt/anaconda
+  groupadd neuro-ix
+  chgrp -R neuro-ix /opt/anaconda
   chmod 770 -R /opt/anacond
   #ls -la /opt/anaconda
   
@@ -274,6 +290,8 @@ if ! [ -d $HOME_PATH/Zotero* ]; then
   wget -q "https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=6.0.27" -O /tmp/zotero_latest.tar.bz2
   tar -xjf /tmp/zotero_latest.tar.bz2 -C $HOME_PATH
   mv $HOME_PATH/Zotero_linux-x86_64 $HOME_PATH/Zotero
+  chgrp -R neuro-ix $HOME_PATH/Zotero
+  chmod 770 -R $HOME_PATH/Zotero
   #chmod +x $HOME_PATH/Zotero/set_launcher_icon
   #$HOME_PATH/Zotero/set_launcher_icon
   #ln -s $HOME_PATH/Zotero/zotero.desktop ~/.local/share/applications/zotero.desktop
@@ -341,7 +359,8 @@ fi
 if ! [ -d $HOME_PATH/Slicer* ]; then 
   wget https://download.slicer.org/bitstream/657813b183a3201b44d4e6f7 -O /tmp/slicer.tar.gz
   tar xzf /tmp/slicer.tar.gz -C $HOME_PATH
-  chmod -R 777 $HOME_PATH/Slicer*
+  chgrp -R neuro-ix $HOME_PATH/Slicer*
+  chmod 770 -R $HOME_PATH/Slicer*
   rm /tmp/slicer.tar.gz
   
   echo '' >> $HOME_PATH/.bashrc
