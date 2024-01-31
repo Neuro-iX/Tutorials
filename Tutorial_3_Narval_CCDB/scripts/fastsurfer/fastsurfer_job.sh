@@ -40,7 +40,7 @@ sbatch ~/projects/def-sbouix/software/fastsurfer/fastsurfer_job.sh ~/projects/de
 ### Load the software apptainer version 1.1.8 onto your Narval login node session
 module load apptainer/1.1.8
 
-if [ -z "$1" ] ### Check if you didn't add a path to a second script when executing this current script.
+if [[ -z "$1"  ||  "$1" == "-h" ||  "$1" == "--help"]] ### First variable is empty or need help
 then
 	Help ### Activate Help function
 else ### You did add the second script to be executed inside the container
