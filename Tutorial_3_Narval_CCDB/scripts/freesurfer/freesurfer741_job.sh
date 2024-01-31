@@ -42,7 +42,7 @@ module load apptainer/1.1.8
 
 if [[ -z "$1"  ||  "$1" == "-h" ||  "$1" == "--help"]]; then ### First variable is empty or need help
 	Help ### Activate Help function
- else ### You did add the second script to be executed inside the container
+else ### You did add the second script to be executed inside the container
     echo "---Start container from fs741.sif"
     var=`echo $1 | awk -F 'def-sbouix/' '{print $2}'` ### Get the name of the second script to be executed inside the container
     
