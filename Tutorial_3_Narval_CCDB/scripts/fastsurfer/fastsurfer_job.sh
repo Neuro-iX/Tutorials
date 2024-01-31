@@ -25,11 +25,11 @@ AUTHOR: Benoît Verreman
 LAST UPDATE: 2024-01-15
 
 DESCRIPTION: 
-On Narval computing server, use apptainer and the image fastsurfer-gpu.sif to create a container and execute a second script inside.
+On Narval computing server, use apptainer and the image fastsurfer-gpu.sif to create a container, and execute a second script inside.
 You have to add the path to the second script to be executed inside the generated container.
 
 EXAMPLE OF USAGE:
-batch ~/projects/def-sbouix/software/fastsurfer/fastsurfer_job.sh ~/projects/def-sbouix/software/fastsurfer/test_fastsurfer.sh
+sbatch ~/projects/def-sbouix/software/fastsurfer/fastsurfer_job.sh ~/projects/def-sbouix/software/fastsurfer/test_fastsurfer.sh
 "
 }
 
