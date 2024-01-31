@@ -5,14 +5,14 @@
 #SBATCH --output=output_fastsurfer_%j.txt
 #SBATCH --open-mode=append
 
-##SBATCH --nodes=1
-##SBATCH --ntasks-per-node=1
-##SBATCH --ntasks=1
-##SBATCH --mem-per-cpu=4000 
-##SBATCH --mail-user=...@...
-##SBATCH --mail-type=ALL
-
-### '#SBATCH ...' are directives (or options) in the job script are prefixed with #SBATCH and must precede all executable commands
+### '#SBATCH ...' are directives (or options) in the job script (must precede all executable commands)
+### Other examples:
+# #SBATCH --nodes=1
+# #SBATCH --ntasks-per-node=1
+# #SBATCH --ntasks=1
+# #SBATCH --mem-per-cpu=4000 
+# #SBATCH --mail-user=...@...
+# #SBATCH --mail-type=ALL
 
 #################
 ## Help
