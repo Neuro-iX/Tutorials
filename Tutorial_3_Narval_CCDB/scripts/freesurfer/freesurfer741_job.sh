@@ -40,8 +40,7 @@ sbatch ~/projects/def-sbouix/software/Freesurfer7.4.1_container/freesurfer741_jo
 ### Load the software apptainer version 1.1.8 onto your Narval login node session
 module load apptainer/1.1.8
 
-if [[ -z "$1"  ||  "$1" == "-h" ||  "$1" == "--help"]] ### First variable is empty or need help
-then
+if [[ -z "$1"  ||  "$1" == "-h" ||  "$1" == "--help"]]; then ### First variable is empty or need help
 	Help ### Activate Help function
  else ### You did add the second script to be executed inside the container
     echo "---Start container from fs741.sif"
