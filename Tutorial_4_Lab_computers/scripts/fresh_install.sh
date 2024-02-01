@@ -65,9 +65,10 @@ adduser at90180 neuro-ix
 adduser at70870 neuro-ix
 adduser at84490 neuro-ix
 #chgrp -R neuro-ix /opt/anaconda
-#chmod 770 -R /opt/anacond
+#chmod 770 -R /opt/anaconda
 #ls -la /opt/anaconda
-#cat /etc/group
+#cat /etc/group ### see all the groups that exist
+#id -nG "$USER" | grep -qw "neuro-ix" ### get all groups in user and check if "neuro-ix" is among them
 
 ###############################
 ######
@@ -211,8 +212,8 @@ if [ $? -eq 1 ]; then
   rm /tmp/Anaconda3-2023.09-0-Linux-x86_64.sh 
   
   groupadd neuro-ix
-  chgrp -R neuro-ix /opt/anaconda
-  chmod 770 -R /opt/anacond
+  chgrp neuro-ix -R /opt/anaconda
+  chmod 770 -R /opt/anaconda
   
   #cat > /tmp/fresh_install_subscript.sh <<EOF
   #source ~/.bashrc
