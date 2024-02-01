@@ -368,15 +368,15 @@ fi
 ######
 # FastX
 ######
-if ! [ -d $HOME_PATH/FASTX3 ]; then 
+if ! [ -d $HOME_PATH/FastX3 ]; then 
   wget https://www.starnet.com/files/private/FastX3/FastX3-3.3.20.rhel7.x86_64.tar.gz -O /tmp/fastx.tar.gz
   tar xzf /tmp/fastx.tar.gz -C $HOME_PATH
-  chgrp -R neuro-ix $HOME_PATH/FASTX3
-  chmod 770 -R $HOME_PATH/FASTX3
+  chgrp -R neuro-ix $HOME_PATH/FastX3
+  chmod 770 -R $HOME_PATH/FastX3
   rm /tmp/fastx.tar.gz
   
   export FASTX=1
-  if [ -d $HOME_PATH/FASTX3 ]; then 
+  if [ -d $HOME_PATH/FastX3 ]; then 
     export FASTX=2
   fi
 fi
