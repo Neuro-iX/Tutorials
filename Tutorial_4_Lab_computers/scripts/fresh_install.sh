@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Create variables to list which software was already installed, which was installed by the current execution of the script, and which installation failed
-export list="SSHFS CUDA VSCODE GLOBUS DISCORD ANYDESK ANACONDA GIT DATALAD ZOTERO DOCKER APPTAINER SLICER"
+export list="SSHFS CUDA VSCODE GLOBUS DISCORD ANYDESK ANACONDA GIT DATALAD ZOTERO DOCKER APPTAINER SLICER FASTX"
 for i in $list; do export $i=0; done
 
 #################
@@ -365,6 +365,23 @@ if ! [ -d $HOME_PATH/Slicer* ]; then
   fi
 fi
 
+######
+# FastX
+######
+if ! [ -d $HOME_PATH/FASTX3 ]; then 
+  wget https://www.starnet.com/files/private/FastX3/FastX3-3.3.20.rhel7.x86_64.tar.gz -O /tmp/fastx.tar.gz
+  tar xzf /tmp/fastx.tar.gz -C $HOME_PATH
+  chgrp -R neuro-ix $HOME_PATH/FASTX3
+  chmod 770 -R $HOME_PATH/FASTX3
+  rm /tmp/fastx.tar.gz
+  
+  export FASTX=1
+  if [ -d $HOME_PATH/FASTX3 ]; then 
+    export FASTX=2
+  fi
+fi
+
+############################
 #### Print result
 for i in $list; do 
   var=${!i} 
