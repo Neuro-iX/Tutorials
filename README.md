@@ -53,6 +53,7 @@ Learning outcomes
 3. Fastsurfer tutorials \
   a) Fastsurfer overview \
   b) Optional flags
+4. Nibabel: python library for neuro-images editing
 
 ## Tutorial-3
 
@@ -78,4 +79,5 @@ Learning outcomes
 
 0. Structure of office computers
 1. List of softwares installed
+2. List of softwares and some tips
 
