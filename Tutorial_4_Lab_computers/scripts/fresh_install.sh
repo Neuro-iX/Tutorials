@@ -193,7 +193,7 @@ if [ $? -eq 1 ]; then
   echo "neuro-IX|A-3434" | anydesk --set-password #Works even if option set-password still visible
   apt-key export CDFFDE29 | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/anydesk.gpg #solve the warning in apt update, by copying the key in /etc/apt/trusted.gpg in /etc/apt/trusted.gpg.d/anydesk.gpg 
   apt update -y
-  EOF
+EOF
 
   sudo apt install curl
   curl -fsSL https://keys.anydesk.com/repos/DEB-GPG-KEY|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/anydesk.gpg
