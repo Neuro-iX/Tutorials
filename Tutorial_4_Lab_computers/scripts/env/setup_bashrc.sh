@@ -30,6 +30,6 @@ Echo "
 #########
 ## Neuro-iX bashrc
 #########
-source /mnt/shared_data/software/env/Neuro_iX_bashrc.sh
+source /mnt/shared_data/softwares/env/Neuro_iX_bashrc.sh
 "
 #source /project/Neuro-IX... with previous server (Miller)
