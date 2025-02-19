@@ -1,12 +1,18 @@
 #!/bin/bash
 
-#/project/Neuro-IX/software... with previous server (Miller)
-# /mnt/shared_data/softwares for hippocampus
+builtin echo
+"
+Neuro_iX_bashrc.sh is a script for completing setups to $HOME/.bashrc, 
+specific to lab computers from A-3434 (/project/hippocmapus/common/softwares/env).
+Use `cat $HOME/.bashrc` to check for any redundancies.
+Author: Benoit Verreman
+Last update: 19/02/2025
+"
 
 #########
 ## FSL Setup
 #########
-FSLDIR=/mnt/shared_data/softwares/fsl
+FSLDIR=/project/hippocmapus/softwares/fsl
 . $FSLDIR/etc/fslconf/fsl.sh
 source /etc/environment #reset PATH
 PATH=$FSLDIR/share/fsl/bin:/usr/share:$PATH
