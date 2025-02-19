@@ -12,7 +12,7 @@ Last update: 19/02/2025
 #########
 ## FSL Setup
 #########
-FSLDIR=/project/hippocmapus/softwares/fsl
+FSLDIR=/project/hippocampus/softwares/fsl
 . $FSLDIR/etc/fslconf/fsl.sh
 source /etc/environment #reset PATH
 PATH=$FSLDIR/share/fsl/bin:/usr/share:$PATH
