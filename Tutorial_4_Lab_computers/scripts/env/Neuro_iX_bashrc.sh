@@ -21,11 +21,11 @@ export FSLDIR PATH
 #########
 ## Freesurfer Setup
 #########
-export FREESURFER_HOME=/mnt/shared_data/softwares/freesurfer
+export FREESURFER_HOME=/project/hippocmapus/common/softwares/freesurfer
 source $FREESURFER_HOME/SetUpFreeSurfer.sh
 
 #########
 ## Slicer Setup
 #########
-export SITK_SHOW_COMMAND=/mnt/shared_data/softwares/slicer
+export SITK_SHOW_COMMAND=/project/hippocmapus/common/softwares/slicer
 alias slicer='$SITK_SHOW_COMMAND/Slicer'
