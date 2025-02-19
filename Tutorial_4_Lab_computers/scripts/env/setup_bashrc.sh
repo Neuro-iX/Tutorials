@@ -3,7 +3,7 @@
 builtin echo
 "
 setup_bashrc.sh is a script for adding setups to $HOME/.bashrc script, 
-specific to computer labs from A-3434 (/project/hippocmapus/common/softwares).
+specific to labs computer from A-3434 (/project/hippocmapus/common/softwares).
 Use `cat $HOME/.bashrc` to check for any redundancies.
 Author: Benoit Verreman
 Last update: 19/02/2025
