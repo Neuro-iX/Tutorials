@@ -3,10 +3,10 @@
 builtin echo
 "
 setup_bashrc.sh is a script for adding setups to $HOME/.bashrc script, 
-specific to computer labs from A-3413 (/project/Neuro-IX/software).
+specific to computer labs from A-3434 (/project/hippocmapus/common/softwares).
 Use `cat $HOME/.bashrc` to check for any redundancies.
 Author: Benoit Verreman
-Last update: 09/11/2023
+Last update: 19/02/2025
 "
 
 #########
@@ -30,6 +30,5 @@ Echo "
 #########
 ## Neuro-iX bashrc
 #########
-source /mnt/shared_data/softwares/env/Neuro_iX_bashrc.sh
+source /project/hippocmapus/common/softwares/env/Neuro_iX_bashrc.sh
 "
-#source /project/Neuro-IX... with previous server (Miller)
