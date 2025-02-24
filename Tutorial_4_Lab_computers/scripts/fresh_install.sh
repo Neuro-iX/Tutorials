@@ -194,14 +194,33 @@ if [ $? -eq 1 ]; then
   apt-key export CDFFDE29 | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/anydesk.gpg #solve the warning in apt update, by copying the key in /etc/apt/trusted.gpg in /etc/apt/trusted.gpg.d/anydesk.gpg 
   apt update -y
 EOF
-
+  
+  #Use other method because apt-key depreciated
+  cat <<EOF
   sudo apt install curl
   curl -fsSL https://keys.anydesk.com/repos/DEB-GPG-KEY|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/anydesk.gpg
   echo "deb http://deb.anydesk.com/ all main" | sudo tee /etc/apt/sources.list.d/anydesk-stable.list
   sudo apt update
   sudo apt install anydesk
   #'anydesk' in terminal
-  
+EOF
+
+  ### After the 2nd February 2025: https://deb.anydesk.com/howto.html
+  sudo apt update
+  sudo apt install ca-certificates curl apt-transport-https
+  sudo install -m 0755 -d /etc/apt/keyrings
+  sudo curl -fsSL https://keys.anydesk.com/repos/DEB-GPG-KEY -o /etc/apt/keyrings/keys.anydesk.com.asc
+  sudo chmod a+r /etc/apt/keyrings/keys.anydesk.com.asc
+
+  # Add the AnyDesk apt repository
+  echo "deb [signed-by=/etc/apt/keyrings/keys.anydesk.com.asc] https://deb.anydesk.com all main" | sudo tee /etc/apt/sources.list.d/anydesk-stable.list > /dev/null
+
+  # Update apt caches and install the AnyDesk client
+  sudo apt update
+  sudo apt install anydesk
+
+  #'anydesk' in terminal
+
   export ANYDESK=1
   which anydesk >/dev/null 2>&1
   if [ $? -eq 0 ]; then
