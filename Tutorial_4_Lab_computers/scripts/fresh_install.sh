@@ -380,7 +380,7 @@ fi
 # Slicer 
 ######
 if ! [ -d $HOME_PATH/Slicer* ]; then 
-  wget https://download.slicer.org/bitstream/657813b183a3201b44d4e6f7 -O /tmp/slicer.tar.gz
+  wget https://download.slicer.org/bitstream/67c51fc129825655577cfee9 -O /tmp/slicer.tar.gz
   tar xzf /tmp/slicer.tar.gz -C $HOME_PATH
   chgrp -R neuro-ix $HOME_PATH/Slicer*
   chmod 770 -R $HOME_PATH/Slicer*
