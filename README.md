@@ -95,7 +95,7 @@ Learning outcomes
 
 ## Tutorial-6
 
-:rocket: [**Publishing**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_5_Website/Tutorial_6_Publishing.ipynb)
+:rocket: [**Publishing**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_6_Publishing/Tutorial_6_Publishing.ipynb)
 
 Learning outcomes
 
