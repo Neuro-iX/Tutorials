@@ -9,6 +9,7 @@ You are welcome to update/improve previous tutorials or add your own one.
 - [Tutorial-3 - Narval](#Tutorial-3)
 - [Tutorial-4 - Lab computers](#Tutorial-4)
 - [Tutorial-5 - Website](#Tutorial-5)
+- [Tutorial-6 - Publishing](#Tutorial-6)
 
 ## Launching
 
@@ -91,3 +92,16 @@ Learning outcomes
 0. Overview of Neuro-iX Website
 1. Install RStudio and some dependencies
 2. How to make changes and update
+
+## Tutorial-6
+
+:rocket: [**Publishing**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_5_Website/Tutorial_6_Publishing.ipynb)
+
+Learning outcomes
+
+0. Submit an article on Arxiv
+1. Publish your code
+  a) Clean code
+  b) Docker image
+  c) Boutique
+  d) Nipoppy
