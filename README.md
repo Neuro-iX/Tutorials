@@ -48,7 +48,12 @@ Learning outcomes
 :rocket: [**Freesurfer**](https://colab.research.google.com/github/Neuro-iX/Tutorials/blob/main/Tutorial_2_Freesurfer/Tutorial_2_Freesurfer.ipynb)
 
 Learning outcomes
- \
+
+0. Freesurfer overview
+1. Freesurfer installation/build
+2. Freesurfer tutorials
+3. Fastsurfer tutorials \
+  a) Fastsurfer overview \
   b) Optional flags
 4. Nibabel: python library for neuro-images editing
 
