@@ -99,8 +99,9 @@ Learning outcomes
 
 Learning outcomes
 
-0. Submit an article on Arxiv
-1. Publish your code \
+0. Share codes and data on Zenodo
+1. Submit an article on Arxiv
+2. Publish your code \
   a) Clean code \
   b) Docker image \
   c) Boutique \
